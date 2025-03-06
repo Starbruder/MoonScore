@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PlayScore")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d454e025b32dbc378cc6d22935178cd4d7ec62ae")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fde117fb7a4f0c84a9a6eac2b6bc217bc90b7dff")]
 [assembly: System.Reflection.AssemblyProductAttribute("PlayScore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PlayScore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

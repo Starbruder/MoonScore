@@ -42,16 +42,14 @@ public sealed class DatabaseManager(SQLiteConnection connection)
         }
 
         string sql = "INSERT INTO Spiele (ID, Name, Release_Date, Rating, Mondphase_ID) " +
-                     "VALUES (@ID, @Name, @Rating, @Release_Date, @Mondphase_ID);";
-
-        string formattedRating = game.Rating.ToString(CultureInfo.InvariantCulture); //Format Rating so it can be inserted
+                     "VALUES (@ID, @Name, @Release_Date, @Rating, @Mondphase_ID);";
 
         using (var command = new SQLiteCommand(sql, connection))
         {
             command.Parameters.AddWithValue("@ID", game.Id);
             command.Parameters.AddWithValue("@Name", game.Name);
             command.Parameters.AddWithValue("@Rating", game.Rating);
-            command.Parameters.AddWithValue("@Release_Date", formattedRating);
+            command.Parameters.AddWithValue("@Release_Date", game.Released);
             command.Parameters.AddWithValue("@Mondphase_ID", 0);
 
             command.ExecuteNonQuery();
