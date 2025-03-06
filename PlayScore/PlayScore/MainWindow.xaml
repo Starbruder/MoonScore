@@ -5,30 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlayScore"
         mc:Ignorable="d"
-        Title="PlayScore" Height="1000" Width="800">
+        Title="PlayScore" Height="900" Width="1400"
+        Style="{StaticResource MaterialDesignWindow}">
 	<Window.Icon>
 		<DrawingImage />
 	</Window.Icon>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <StackPanel AutomationProperties.Name="">
+            <Button Click="ConnectToDatabase" Height="30">Mit Datenbank verbinden</Button>
+            <Label HorizontalContentAlignment="Center">Name für Tabelle:</Label>
+            <TextBox Name="TableName"/>
+            <Button Click="CreateTable" Height="30">Tabelle erstellen</Button>
 
-	<StackPanel AutomationProperties.Name="">
-		<Button Click="ConnectToDatabase" Height="30">Mit Datenbank verbinden</Button>
-		<Label HorizontalContentAlignment="Center">Name für Tabelle:</Label>
-		<TextBox Name="TableName"/>
-		<Button Click="CreateTable" Height="30">Tabelle erstellen</Button>
+            <Label HorizontalContentAlignment="Center" Margin="250, 5, 250, 0" Height="30">Datum input Format: YYYY-MM-DD</Label>
+            <TextBox Name="DateTextBox" Width="200" Height="30" Margin="10" />
+            <Button Content="Get Moon Phase" Width="150" Height="30" Margin="10,5,10,0" Click="GetMoonphase"/>
 
-		<Label HorizontalContentAlignment="Center" Margin="250, 5, 250, 0" Height="30">Datum input Format: YYYY-MM-DD</Label>
-        <TextBox Name="DateTextBox" Width="200" Height="30" Margin="10" />
-        <Button Content="Get Moon Phase" Width="150" Height="30" Margin="10,5,10,0" Click="GetMoonphase"/>
+            <TextBlock TextAlignment="Center" Name="MoonPhaseTextBlock" Margin="0,5,0,5" Height="30" FontSize="20"/>
 
-		<TextBlock TextAlignment="Center" Name="MoonPhaseTextBlock" Margin="0,5,0,5" Height="30" FontSize="20"/>
+            <Button Content="Get Games" Width="150" Height="30" Margin="10,5,10,0" Click="GetGames"/>
 
-        <Button Content="Get Games" Width="150" Height="30" Margin="10,5,10,0" Click="GetGames"/>
-
-        <Label Margin="0, 5, 300, 0" Height="30">Liste der Spiele</Label>
-        <ListBox x:Name="GamesListBox" 
+            <Label Margin="0, 5, 300, 0" Height="30">Liste der Spiele</Label>
+            <ListBox x:Name="GamesListBox" 
                  HorizontalAlignment="Stretch" 
                  VerticalAlignment="Stretch" 
                  DisplayMemberPath="Name" />
-    </StackPanel>
+            <Button Content="Save Games to Database" Width="250" Height="30" Margin="10,5,10,0" Click="SaveGamesToDatabase"/>
+        </StackPanel>
+    </ScrollViewer>
 
 </Window>

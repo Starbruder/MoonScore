@@ -32,6 +32,7 @@ public partial class MainWindow : Window
     private void ConnectToDatabase(object sender, RoutedEventArgs e)
     {
         _databaseHelper.ConnectToDatabase();
+        CreateDatabase(sender, e);
     }
 
     private void CreateDatabase(object sender, RoutedEventArgs e)
@@ -80,5 +81,17 @@ public partial class MainWindow : Window
 
         Games.Clear();
         gameData.ForEach(Games.Add);
+    }
+
+    public void SaveGamesToDatabase(object sender, RoutedEventArgs e)
+    {
+        var games = (ObservableCollection<GameModel>)GamesListBox.ItemsSource;
+        foreach(var game in games)
+        {
+            if(game.Rating > 0)
+            {
+                _databaseManager.AddGameToSpieleTable(game);
+            }
+        }
     }
 }
