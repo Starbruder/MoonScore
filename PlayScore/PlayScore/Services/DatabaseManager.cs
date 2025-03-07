@@ -31,8 +31,8 @@ public sealed class DatabaseManager(SQLiteConnection connection)
             connection.Open();
         }
 
-        string sql = "INSERT INTO Spiele (ID, Name, Release_Date, Rating, Mondphase_ID) " +
-                     "VALUES (@ID, @Name, @Release_Date, @Rating, @Mondphase_ID);";
+        string sql = "INSERT INTO Spiele (ID, Name, Release_Date, Rating, MondphaseName) " +
+                     "VALUES (@ID, @Name, @Release_Date, @Rating, @MondphaseName);";
 
         using (var command = new SQLiteCommand(sql, connection))
         {
@@ -40,7 +40,7 @@ public sealed class DatabaseManager(SQLiteConnection connection)
             command.Parameters.AddWithValue("@Name", game.Name);
             command.Parameters.AddWithValue("@Rating", game.Rating);
             command.Parameters.AddWithValue("@Release_Date", game.Released);
-            command.Parameters.AddWithValue("@Mondphase_ID", 0);
+            command.Parameters.AddWithValue("@MondphaseName", game.MondphaseName);
 
             command.ExecuteNonQuery();
         }

@@ -15,7 +15,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Button Content="Start Program" Width="150" Click="StartProgram_Click" Grid.Row="0"/>
-        <Button Content="Close" Width="150" Click="Close_Click" Grid.Row="2"/>
+        <Button Content="Start Program" Width="250" Click="StartProgram_Click" Grid.Row="0" Margin="0,0,0,100"/>
+        <Button Content="Close" Width="250" Click="Close_Click" Grid.Row="2" Margin="0,100,0,0"/>
     </Grid>
 </Window>

@@ -36,11 +36,13 @@ public partial class App : Application
 
         services.AddSingleton(new SQLiteConnection(connectionString));
 
+        //Register Services
         services.AddSingleton<DatabaseManager>();
         services.AddSingleton<MoonphaseService>();
+        services.AddSingleton<MoonphaseTranslator>();
         services.AddSingleton<GameService>();
 
-        // Register MainWindow
+        // Register Windows/Screens
         services.AddSingleton<StartScreen>();
         services.AddSingleton<MainWindow>();
     }

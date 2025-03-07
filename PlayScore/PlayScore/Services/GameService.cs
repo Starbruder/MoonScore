@@ -10,11 +10,15 @@ public sealed class GameService : IService
     private readonly HttpClient _httpClient;
     private readonly string apiKey = ConfigurationManager.AppSettings["API_KEY_GAMES"] ?? string.Empty;
     private readonly string ApiUrl;
+    private readonly MoonphaseService _moonphaseService;
+    private readonly MoonphaseTranslator _moonphaseTranslator;
 
-    public GameService()
+    public GameService(MoonphaseService moonphaseService, MoonphaseTranslator moonphaseTranslator)
     {
         _httpClient = new HttpClient();
         ApiUrl = $"https://api.rawg.io/api/games?key={apiKey}&dates=";
+        _moonphaseService = moonphaseService;
+        _moonphaseTranslator = moonphaseTranslator;
     }
 
     public async Task<List<GameModel>> GetGamesByReleaseDateAsync(string releaseDate)
@@ -37,12 +41,23 @@ public sealed class GameService : IService
 
             foreach (var game in jsonResponse.results)
             {
+                string gameReleaseDate = game.released;
+                double gameRating = game.rating;
+
+                string moonPhaseName = null;
+
+                if (gameRating > 0)
+                {
+                    moonPhaseName = await GetGameMoonPhaseAsync(gameReleaseDate);
+                }
+
                 games.Add(new GameModel
                 {
                     Id = game.id,
                     Name = game.name,
                     Released = game.released,
-                    Rating = game.rating
+                    Rating = game.rating,
+                    MondphaseName = moonPhaseName
                 });
             }
 
@@ -53,5 +68,12 @@ public sealed class GameService : IService
             Console.WriteLine($"Error fetching games: {ex.Message}");
             return [];
         }
+    }
+
+    public async Task<string> GetGameMoonPhaseAsync(string date)
+    {
+        var moonPhaseData = await _moonphaseService.GetMoonPhaseAsync(date, 54.0924, 12.1407);
+        var translatedMoonPhase = _moonphaseTranslator.Translate(moonPhaseData.MoonPhase);
+        return translatedMoonPhase;
     }
 }

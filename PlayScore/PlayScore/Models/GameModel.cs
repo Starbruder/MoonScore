@@ -16,5 +16,5 @@ public sealed class GameModel
     [JsonProperty("rating")]
     public double Rating { get; set; }
 
-    public int MondphaseID { get; set; }
+    public string MondphaseName { get; set; }
 }
