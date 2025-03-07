@@ -40,12 +40,6 @@ public partial class MainWindow : Window
         DatabaseManager.CreateDatabase(_dbPath);
     }
 
-    private void CreateTable(object sender, RoutedEventArgs e)
-    {
-        var tableName = TableName.Text;
-        _databaseManager.CreateTable(tableName);
-    }
-
     private async void GetMoonphase(object sender, RoutedEventArgs e)
     {
         string date = DateTextBox.Text;
