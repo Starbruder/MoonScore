@@ -6,15 +6,13 @@
         xmlns:local="clr-namespace:PlayScore"
         mc:Ignorable="d"
         Title="PlayScore" Height="900" Width="1400"
-        Style="{StaticResource MaterialDesignWindow}">
+        Style="{StaticResource MaterialDesignWindow}"
+        WindowStartupLocation="CenterScreen">
 	<Window.Icon>
 		<DrawingImage />
 	</Window.Icon>
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-        <StackPanel AutomationProperties.Name="">
-            <Button Click="ConnectToDatabase" Height="30">Mit Datenbank verbinden</Button>
-            <Label HorizontalContentAlignment="Center">Name für Tabelle:</Label>
-
+        <StackPanel>
             <Label HorizontalContentAlignment="Center" Margin="250, 5, 250, 0" Height="30">Datum input Format: YYYY-MM-DD</Label>
             <TextBox Name="DateTextBox" Width="200" Height="30" Margin="10" />
             <Button Content="Get Moon Phase" Width="150" Height="30" Margin="10,5,10,0" Click="GetMoonphase"/>

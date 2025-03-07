@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using PlayScore.Services;
 using System.Configuration;
 using System.Data.SQLite;
 using System.Windows;
@@ -24,8 +25,8 @@ public partial class App : Application
         ServiceProvider = serviceCollection.BuildServiceProvider();
 
         // Resolve and show MainWindow
-        var mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
-        mainWindow.Show();
+        var startScreen = ServiceProvider.GetRequiredService<StartScreen>();
+        startScreen.Show();
     }
 
     private void ConfigureServices(IServiceCollection services)
@@ -35,10 +36,12 @@ public partial class App : Application
 
         services.AddSingleton(new SQLiteConnection(connectionString));
 
-        services.AddSingleton<DatabaseHelper>();
         services.AddSingleton<DatabaseManager>();
+        services.AddSingleton<MoonphaseService>();
+        services.AddSingleton<GameService>();
 
         // Register MainWindow
+        services.AddSingleton<StartScreen>();
         services.AddSingleton<MainWindow>();
     }
 }

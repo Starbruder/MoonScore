@@ -12,32 +12,21 @@ namespace PlayScore;
 public partial class MainWindow : Window
 {
     private readonly DatabaseManager _databaseManager;
-    private readonly DatabaseHelper _databaseHelper;
 
-    private readonly MoonphaseService _moonphaseService = new();
-    private readonly GameService _gameService = new();
-
-    private readonly string _dbPath = ConfigurationManager.AppSettings["CONNECTION_NAME"] ?? string.Empty;
+    private readonly MoonphaseService _moonphaseService;
+    private readonly GameService _gameService;
 
     public ObservableCollection<GameModel> Games { get; } = [];
 
-    public MainWindow(DatabaseManager databaseManager, DatabaseHelper databaseHelper)
+    public MainWindow(DatabaseManager databaseManager, MoonphaseService moonphaseService, GameService gameService)
     {
         InitializeComponent();
 
+        WindowState = WindowState.Maximized;
+
         _databaseManager = databaseManager;
-        _databaseHelper = databaseHelper;
-    }
-
-    private void ConnectToDatabase(object sender, RoutedEventArgs e)
-    {
-        _databaseHelper.ConnectToDatabase();
-        CreateDatabase(sender, e);
-    }
-
-    private void CreateDatabase(object sender, RoutedEventArgs e)
-    {
-        DatabaseManager.CreateDatabase(_dbPath);
+        _moonphaseService = moonphaseService;
+        _gameService = gameService;
     }
 
     private async void GetMoonphase(object sender, RoutedEventArgs e)

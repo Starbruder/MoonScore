@@ -2,16 +2,25 @@
 using System.Data.SQLite;
 using System.Globalization;
 
-namespace PlayScore;
+namespace PlayScore.Services;
 
 public sealed class DatabaseManager(SQLiteConnection connection)
 {
-    public static void CreateDatabase(string dbPath)
+    public void ConnectToDatabase()
     {
-        if (!System.IO.File.Exists(dbPath))
+        if (connection.State == System.Data.ConnectionState.Open)
         {
-            SQLiteConnection.CreateFile(dbPath);
-            Console.WriteLine("Database file created.");
+            return;
+        }
+
+        try
+        {
+            connection.Open();
+            Console.WriteLine("Database connected.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
         }
     }
 

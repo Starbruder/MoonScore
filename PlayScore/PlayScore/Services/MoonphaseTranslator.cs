@@ -1,4 +1,4 @@
-﻿namespace PlayScore;
+﻿namespace PlayScore.Services;
 
 public sealed class MoonphaseTranslator
 {
@@ -16,7 +16,7 @@ public sealed class MoonphaseTranslator
 
     public string Translate(string moonPhase)
     {
-        return (_moonPhaseTranslations.TryGetValue(moonPhase, out var translation))
+        return _moonPhaseTranslations.TryGetValue(moonPhase, out var translation)
             ? translation
             : moonPhase; // Return the original name if no translation is found
     }
