@@ -14,34 +14,33 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PlayScore
+namespace PlayScore;
+
+/// <summary>
+/// Interaktionslogik für StartScreen.xaml
+/// </summary>
+public partial class StartScreen : Window
 {
-    /// <summary>
-    /// Interaktionslogik für StartScreen.xaml
-    /// </summary>
-    public partial class StartScreen : Window
+    private readonly IServiceProvider _serviceProvider;
+
+    public StartScreen(IServiceProvider serviceProvider)
     {
-        private readonly IServiceProvider _serviceProvider;
+        InitializeComponent();
 
-        public StartScreen(IServiceProvider serviceProvider)
-        {
-            InitializeComponent();
+        _serviceProvider = serviceProvider;
 
-            _serviceProvider = serviceProvider;
+        WindowState = WindowState.Maximized;
+    }
 
-            WindowState = WindowState.Maximized;
-        }
+    private void StartProgram_Click(object sender, RoutedEventArgs e)
+    {
+        var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
+        mainWindow.Show();
+        Close();
+    }
 
-        private void StartProgram_Click(object sender, RoutedEventArgs e)
-        {
-            var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
-            mainWindow.Show();
-            Close();
-        }
-
-        private void Close_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
+    private void Close_Click(object sender, RoutedEventArgs e)
+    {
+        Application.Current.Shutdown();
     }
 }
