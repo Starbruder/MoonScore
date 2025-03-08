@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Windows;
+using System.Windows.Media.Imaging;
 using PlayScore.Models;
 using PlayScore.Services;
 
@@ -47,6 +48,9 @@ public partial class MainWindow : Window
 
         var translator = new MoonphaseTranslator();
         MoonPhaseTextBlock.Text = $"Mondphase: {translator.Translate(moonPhaseData.MoonPhase)}";
+
+        // Trying fetching Image instead
+        imgTitle.Source = new BitmapImage(new(@"pack://application:,,,/Images/phases/8_FullMoon.png"));
     }
 
     private async void GetGames(object sender, RoutedEventArgs e)
