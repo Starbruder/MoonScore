@@ -50,7 +50,14 @@ public partial class MainWindow : Window
         MoonPhaseTextBlock.Text = $"Mondphase: {translator.Translate(moonPhaseData.MoonPhase)}";
 
         // Trying fetching Image instead
-        imgTitle.Source = new BitmapImage(new(@"pack://application:,,,/Images/phases/8_FullMoon.png"));
+        //imgTitle.Source = new BitmapImage(new(@"pack://application:,,,/Images/phases/8_FullMoon.png"));
+
+        var bitmap = new BitmapImage();
+        bitmap.BeginInit();
+        bitmap.UriSource = new Uri("pack://application:,,,/Images/phases/8_FullMoon.png", UriKind.Absolute);
+        bitmap.EndInit();
+        imgTitle.Source = bitmap;
+
     }
 
     private async void GetGames(object sender, RoutedEventArgs e)
