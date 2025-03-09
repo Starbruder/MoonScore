@@ -62,6 +62,10 @@
               "target": "Package",
               "version": "[13.0.3, )"
             },
+            "OxyPlot.Wpf": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "System.Data.SQLite": {
               "target": "Package",
               "version": "[1.0.119, )"
