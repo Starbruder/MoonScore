@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <None Remove="Images\background.jpeg" />
+    <None Remove="Images\background_2.jpeg" />
+    <None Remove="Images\background_3.jpeg" />
     <None Remove="Images\phases\8_FullMoon.png" />
   </ItemGroup>
 
@@ -24,6 +26,12 @@
 
   <ItemGroup>
     <Resource Include="Images\background.jpeg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\background_2.jpeg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\background_3.jpeg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\phases\8_FullMoon.png">

@@ -24,7 +24,7 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
 
-        WindowState = WindowState.Maximized;
+        WindowState = WindowState.Normal;
 
         _databaseManager = databaseManager;
         _moonphaseService = moonphaseService;

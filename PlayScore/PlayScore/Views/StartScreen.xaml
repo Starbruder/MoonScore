@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlayScore"
         mc:Ignorable="d"
-        Title="StartScreen" Height="900" Width="1400"
+        Title="StartScreen" Height="900" Width="1600"
         Style="{StaticResource MaterialDesignWindow}"
         WindowStartupLocation="CenterScreen">
 
@@ -21,20 +21,19 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Playscore"
+        <TextBlock Text="MoonScore"
            FontSize="78"
            FontWeight="Bold"
            Foreground="White"
            FontFamily="Segoe UI Black"
            HorizontalAlignment="Center"
-           Margin="0,0,0,50"
+           Margin="0,0,0,0"
            Grid.Row="0">
             <TextBlock.Effect>
                 <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="0"/>
             </TextBlock.Effect>
         </TextBlock>
 
-        <Button Content="Start Program" Width="250" Click="StartProgram_Click" Grid.Row="1"  Margin="0,00,0,0"/>
-        <Button Content="Close" Width="250" Click="Close_Click" Grid.Row="3" Margin="0,20,0,0"/>
+        <Button Content="Start Program" Width="250" Click="StartProgram_Click" Grid.Row="1"  Margin="0,20,0,450"/>
     </Grid>
 </Window>

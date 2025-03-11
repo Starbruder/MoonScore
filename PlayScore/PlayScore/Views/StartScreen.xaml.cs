@@ -29,7 +29,7 @@ public partial class StartScreen : Window
 
         _serviceProvider = serviceProvider;
 
-        WindowState = WindowState.Maximized;
+        WindowState = WindowState.Normal;
     }
 
     private void StartProgram_Click(object sender, RoutedEventArgs e)

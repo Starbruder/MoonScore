@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:PlayScore"
         xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"
-        Title="PlayScore" Height="900" Width="1400"
+        Title="PlayScore" Height="900" Width="1600"
         Style="{StaticResource MaterialDesignWindow}"
         WindowStartupLocation="CenterScreen">
-	<Window.Icon>
-		<DrawingImage />
-	</Window.Icon>
+    <Window.Background>
+        <ImageBrush ImageSource="pack://application:,,,/Images/background_3.jpeg" Stretch="UniformToFill"/>
+    </Window.Background>
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
         <StackPanel>
             <Label HorizontalContentAlignment="Center" Margin="250, 5, 250, 0" Height="30">Datum input Format: YYYY-MM-DD</Label>
