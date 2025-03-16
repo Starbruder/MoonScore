@@ -1,13 +1,13 @@
 ﻿using OxyPlot.Axes;
 using OxyPlot.Series;
 using OxyPlot;
-using PlayScore.Models;
-using PlayScore.Services;
+using MoonScore.Models;
+using MoonScore.Services;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
-namespace PlayScore;
+namespace MoonScore;
 
 /// <summary>
 /// Interaction logic for MainWindow.xaml

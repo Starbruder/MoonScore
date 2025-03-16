@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using PlayScore.Services;
+using MoonScore.Services;
 using System.Configuration;
 using System.Data.SQLite;
 using System.Windows;
 
-namespace PlayScore;
+namespace MoonScore;
 
 /// <summary>
 /// Interaction logic for App.xaml

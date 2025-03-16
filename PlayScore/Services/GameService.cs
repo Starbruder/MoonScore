@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
-using PlayScore.Models;
+using MoonScore.Models;
 using System.Configuration;
 using System.Net.Http;
 
-namespace PlayScore.Services;
+namespace MoonScore.Services;
 
 public sealed class GameService : IService
 {

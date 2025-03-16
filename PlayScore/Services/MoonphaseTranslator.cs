@@ -1,4 +1,4 @@
-﻿namespace PlayScore.Services;
+﻿namespace MoonScore.Services;
 
 public sealed class MoonphaseTranslator
 {

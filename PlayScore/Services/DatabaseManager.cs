@@ -1,8 +1,8 @@
-﻿using PlayScore.Models;
+﻿using MoonScore.Models;
 using System.Data.SQLite;
 using System.Globalization;
 
-namespace PlayScore.Services;
+namespace MoonScore.Services;
 
 public sealed class DatabaseManager(SQLiteConnection connection)
 {

@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
-using PlayScore.Models;
+using MoonScore.Models;
 using System.Configuration;
 using System.Globalization;
 using System.Net.Http;
 
-namespace PlayScore.Services;
+namespace MoonScore.Services;
 
 public sealed class MoonphaseService : IService
 {

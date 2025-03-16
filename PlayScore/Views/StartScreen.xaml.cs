@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using PlayScore.Services;
+using MoonScore.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PlayScore;
+namespace MoonScore;
 
 /// <summary>
 /// Interaktionslogik für StartScreen.xaml
