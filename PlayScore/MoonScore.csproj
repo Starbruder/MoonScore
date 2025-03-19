@@ -9,10 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\background.jpeg" />
-    <None Remove="Images\background_2.jpeg" />
-    <None Remove="Images\background_3.jpeg" />
-    <None Remove="Images\phases\8_FullMoon.png" />
+    <None Remove="Assets\Images\background.jpeg" />
+    <None Remove="Assets\Images\background_2.jpeg" />
+    <None Remove="Assets\Images\background_3.jpeg" />
+    <None Remove="Assets\Images\phases\8_FullMoon.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,16 +25,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\background.jpeg">
+    <Resource Include="Assets\Images\background.jpeg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\background_2.jpeg">
+    <Resource Include="Assets\Images\background_2.jpeg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\background_3.jpeg">
+    <Resource Include="Assets\Images\background_3.jpeg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\phases\8_FullMoon.png">
+    <Resource Include="Assets\Images\phases\8_FullMoon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
