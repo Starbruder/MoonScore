@@ -20,6 +20,7 @@ public partial class MainWindow : Window
     private readonly GameService _gameService;
 
     public ObservableCollection<GameModel> Games { get; } = [];
+
     public MainWindow(DatabaseManager databaseManager, MoonphaseService moonphaseService, GameService gameService)
     {
         InitializeComponent();
