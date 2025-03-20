@@ -10,7 +10,7 @@
         Style="{StaticResource MaterialDesignWindow}"
         WindowStartupLocation="CenterScreen">
     <Window.Background>
-        <ImageBrush ImageSource="pack://application:,,,/Images/background_3.jpeg" Stretch="UniformToFill"/>
+        <ImageBrush ImageSource="pack://application:,,,/Assets/Images/background_3.jpeg" Stretch="UniformToFill"/>
     </Window.Background>
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
         <StackPanel>

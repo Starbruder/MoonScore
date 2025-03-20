@@ -10,8 +10,8 @@
         WindowStartupLocation="CenterScreen">
 
     <Window.Background>
-        <ImageBrush ImageSource="pack://application:,,,/Images/background.jpeg" Stretch="UniformToFill"/> 
-    </Window.Background>
+		<ImageBrush ImageSource="pack://application:,,,/Assets/Images/background.jpeg" Stretch="UniformToFill"/>
+	</Window.Background>
     
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
         <Grid.RowDefinitions>
