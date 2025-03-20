@@ -14,7 +14,9 @@
     </Window.Background>
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
         <StackPanel>
-            <Label HorizontalContentAlignment="Center" Margin="250, 5, 250, 0" Height="30">Datum input Format: YYYY-MM-DD</Label>
+            <Label HorizontalContentAlignment="Center" Margin="250, 5, 250, 0" Height="30" Foreground="White">
+				Datum input Format: YYYY-MM-DD
+			</Label>
             <TextBox Name="DateTextBox" Width="200" Height="30" Margin="10" />
             <Button Content="Get Moon Phase" Width="150" Height="30" Margin="10,5,10,0" Click="GetMoonphase"/>
 
@@ -29,7 +31,9 @@
 
             <Button Content="Get Games" Width="150" Height="30" Margin="10,5,10,0" Click="GetGames"/>
 
-            <Label Margin="500, 5, 300, 0" Height="30">Liste der Spiele</Label>
+            <Label Margin="500, 5, 300, 0" Height="30" Foreground="White">
+				Liste der Spiele
+			</Label>
             <Grid>
                 <ListBox x:Name="GamesListBox"
                          Width="300"
@@ -39,7 +43,11 @@
             </Grid>
             <Button Content="Save Games to Database" Width="250" Height="30" Margin="10,5,10,0" Click="SaveGamesToDatabase"/>
             <Grid>
-                <oxy:PlotView x:Name="MoonPhasePlot" Height="500" Width="700" />
+				<oxy:PlotView x:Name="MoonPhasePlot" Height="500" Width="700">
+					<!--<oxy:PlotView.Background>
+						Transparent
+					</oxy:PlotView.Background>-->
+				</oxy:PlotView>
             </Grid>
         </StackPanel>
     </ScrollViewer>
