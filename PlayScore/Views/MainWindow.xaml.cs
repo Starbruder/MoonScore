@@ -54,9 +54,14 @@ public partial class MainWindow : Window
         var translator = new MoonphaseTranslator();
         MoonPhaseTextBlock.Text = $"Mondphase: {translator.Translate(moonPhaseData.MoonPhase)}";
 
-        // Fetching Image instead
+        // Getting Moon-Image
+        //const string imagePath = "pack://application:,,,/Assets/Images/phases/";
+        //var imageService = new MoonphaseImageService(imagePath, ".png");
+        //var image = imageService.GetMoonPhaseImage(/*moonPhaseData.MoonPhase*/"");
+        //moonImage.Source = image;
+
         var imageUri = new Uri("pack://application:,,,/Assets/Images/phases/8_FullMoon.png", UriKind.Absolute);
-        imgTitle.Source = new BitmapImage(imageUri);
+        moonImage.Source = new BitmapImage(imageUri);
     }
 
     private async void GetGames(object sender, RoutedEventArgs e)

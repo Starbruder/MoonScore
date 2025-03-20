@@ -20,7 +20,7 @@
             <TextBox Name="DateTextBox" Width="200" Height="30" Margin="10" />
             <Button Content="Get Moon Phase" Width="150" Height="30" Margin="10,5,10,0" Click="GetMoonphase"/>
 
-            <Image x:Name="imgTitle"
+            <Image x:Name="moonImage"
 				   HorizontalAlignment="Left"
 				   VerticalAlignment="Bottom"
 				   Grid.Column="1" Grid.Row="1"
