@@ -160,7 +160,7 @@ public partial class MainWindow : Window
             Position = AxisPosition.Bottom,
             Title = "Average Rating",
             Minimum = 0,
-            Maximum = 10,
+            Maximum = 5,
             IsZoomEnabled = false
         };
         plotModel.Axes.Add(valueAxis);
