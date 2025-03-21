@@ -93,7 +93,7 @@ public partial class MainWindow : Window
     //    }
     //}
 
-    public async void SaveGamesToDatabase(object sender, RoutedEventArgs e)
+    public async void SaveGamesToDatabaseAsync(object sender, RoutedEventArgs e)
     {
         try
         {
@@ -124,7 +124,6 @@ public partial class MainWindow : Window
             MessageBox.Show($"Error saving games: {ex.Message}");
         }
     }
-
 
     private PlotModel CreatePlotModel()
     {
