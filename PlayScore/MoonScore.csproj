@@ -13,6 +13,7 @@
     <None Remove="Assets\Images\background_2.jpeg" />
     <None Remove="Assets\Images\background_3.jpeg" />
     <None Remove="Assets\Images\phases\8_FullMoon.png" />
+    <None Remove="Views\moonscore_IconLogo.png" />
     <None Remove="Views\viewavatar.png" />
   </ItemGroup>
 
@@ -38,6 +39,7 @@
     <Resource Include="Assets\Images\phases\8_FullMoon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Views\moonscore_IconLogo.png" />
     <Resource Include="Views\viewavatar.png" />
   </ItemGroup>
 

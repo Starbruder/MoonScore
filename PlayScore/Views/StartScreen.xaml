@@ -8,7 +8,7 @@
         Title="StartScreen" Height="900" Width="1600"
         Style="{StaticResource MaterialDesignWindow}"
         WindowStartupLocation="CenterScreen"
-        Icon="/Views/viewavatar.png">
+        Icon="/Views/moonscore_IconLogo.png">
 
     <Window.Background>
 		<ImageBrush ImageSource="pack://application:,,,/Assets/Images/background.jpeg" Stretch="UniformToFill"/>
