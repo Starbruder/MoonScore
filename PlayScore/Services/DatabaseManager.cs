@@ -28,11 +28,11 @@ public sealed class DatabaseManager(SQLiteConnection connection)
         }
     }
 
-    public void AddGameToSpieleTable(GameModel game)
+    public async Task AddGameToSpieleTableAsync(GameModel game)
     {
         if (connection.State != System.Data.ConnectionState.Open)
         {
-            connection.Open();
+            await connection.OpenAsync();
         }
 
         var sql = "INSERT INTO Spiele (ID, Name, Release_Date, Rating, MondphaseName) " +
@@ -45,7 +45,7 @@ public sealed class DatabaseManager(SQLiteConnection connection)
         command.Parameters.AddWithValue("@Release_Date", game.Released);
         command.Parameters.AddWithValue("@MondphaseName", game.MondphaseName);
 
-        command.ExecuteNonQuery();
+        await command.ExecuteNonQueryAsync();
     }
 
     public Dictionary<string, double> GetAverageRatingPerMondphase()

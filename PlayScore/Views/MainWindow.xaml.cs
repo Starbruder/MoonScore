@@ -81,17 +81,50 @@ public partial class MainWindow : Window
         gameData.ForEach(Games.Add);
     }
 
-    public void SaveGamesToDatabase(object sender, RoutedEventArgs e)
+    //public async void SaveGamesToDatabase(object sender, RoutedEventArgs e)
+    //{
+    //    var games = (ObservableCollection<GameModel>)GamesListBox.ItemsSource;
+    //    foreach (var game in games)
+    //    {
+    //        if (game.Rating > 0)
+    //        {
+    //            await _databaseManager.AddGameToSpieleTable(game);
+    //        }
+    //    }
+    //}
+
+    public async void SaveGamesToDatabase(object sender, RoutedEventArgs e)
     {
-        var games = (ObservableCollection<GameModel>)GamesListBox.ItemsSource;
-        foreach (var game in games)
+        try
         {
-            if (game.Rating > 0)
+            var games = (ObservableCollection<GameModel>)GamesListBox.ItemsSource;
+
+            // Check if the games collection is not null or empty
+            if (games == null || !games.Any())
             {
-                _databaseManager.AddGameToSpieleTable(game);
+                MessageBox.Show("No games to save.");
+                return;
             }
+
+            foreach (var game in games)
+            {
+                // Only add games with a rating greater than 0
+                if (game.Rating > 0)
+                {
+                    await _databaseManager.AddGameToSpieleTableAsync(game);
+                }
+            }
+
+            // Optionally, notify user of success (UI thread)
+            MessageBox.Show("Games saved successfully!");
+        }
+        catch (Exception ex)
+        {
+            // Handle any errors during the process and notify user
+            MessageBox.Show($"Error saving games: {ex.Message}");
         }
     }
+
 
     private PlotModel CreatePlotModel()
     {
