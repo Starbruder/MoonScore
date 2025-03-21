@@ -99,7 +99,6 @@ public partial class MainWindow : Window
         {
             var games = (ObservableCollection<GameModel>)GamesListBox.ItemsSource;
 
-            // Check if the games collection is not null or empty
             if (games == null || !games.Any())
             {
                 MessageBox.Show("No games to save.");
@@ -108,26 +107,23 @@ public partial class MainWindow : Window
 
             foreach (var game in games)
             {
-                // Only add games with a rating greater than 0
                 if (game.Rating > 0)
                 {
                     await _databaseManager.AddGameToSpieleTableAsync(game);
                 }
             }
 
-            // Optionally, notify user of success (UI thread)
             MessageBox.Show("Games saved successfully!");
         }
         catch (Exception ex)
         {
-            // Handle any errors during the process and notify user
             MessageBox.Show($"Error saving games: {ex.Message}");
         }
     }
 
     private PlotModel CreatePlotModel()
     {
-        Dictionary<string, double> ratings = _databaseManager.GetAverageRatingPerMondphase();
+        var ratings = _databaseManager.GetAverageRatingPerMondphase();
 
         // Generate sample data, still need method for getting the data from our database
         //Dictionary<string, double> ratings = new Dictionary<string, double>
