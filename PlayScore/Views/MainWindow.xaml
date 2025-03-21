@@ -8,7 +8,9 @@
         mc:Ignorable="d"
         Title="PlayScore" Height="900" Width="1600"
         Style="{StaticResource MaterialDesignWindow}"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Icon="/Views/viewavatar.png">
+
     <Window.Background>
         <ImageBrush ImageSource="pack://application:,,,/Assets/Images/background_3.jpeg" Stretch="UniformToFill"/>
     </Window.Background>
