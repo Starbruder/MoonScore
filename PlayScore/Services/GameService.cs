@@ -2,6 +2,7 @@
 using MoonScore.Models;
 using System.Configuration;
 using System.Net.Http;
+using MoonScore.DataConstants;
 
 namespace MoonScore.Services;
 
@@ -11,14 +12,14 @@ public sealed class GameService : IService
     private readonly string apiKey = ConfigurationManager.AppSettings["API_KEY_GAMES"] ?? string.Empty;
     private readonly string ApiUrl;
     private readonly MoonphaseService _moonphaseService;
-    private readonly MoonphaseTranslationService _moonphaseTranslator;
+    private readonly MoonphaseTranslationService _moonphaseTranslationService;
 
     public GameService(MoonphaseService moonphaseService, MoonphaseTranslationService moonphaseTranslator)
     {
         _httpClient = new HttpClient();
         ApiUrl = $"https://api.rawg.io/api/games?key={apiKey}&dates=";
         _moonphaseService = moonphaseService;
-        _moonphaseTranslator = moonphaseTranslator;
+        _moonphaseTranslationService = moonphaseTranslator;
     }
 
     public async Task<List<GameModel>> GetGamesByReleaseDateAsync(string releaseDate)
@@ -44,14 +45,14 @@ public sealed class GameService : IService
                 string gameReleaseDate = game.released;
                 double gameRating = game.rating;
 
-                string moonPhaseName = null;
+                string? moonPhaseName = null;
 
                 if (gameRating > 0)
                 {
                     moonPhaseName = await GetGameMoonPhaseAsync(gameReleaseDate);
                 }
 
-                games.Add(new GameModel
+                games.Add(new()
                 {
                     Id = game.id,
                     Name = game.name,
@@ -72,8 +73,7 @@ public sealed class GameService : IService
 
     public async Task<string> GetGameMoonPhaseAsync(string date)
     {
-        var moonPhaseData = await _moonphaseService.GetMoonPhaseAsync(date, 54.0924, 12.1407);
-        var translatedMoonPhase = _moonphaseTranslator.Translate(moonPhaseData.MoonPhase);
-        return translatedMoonPhase;
+        var moonPhaseData = await _moonphaseService.GetMoonPhaseAsync(date, RostockData.latitude, RostockData.longitude);
+        return _moonphaseTranslationService.Translate(moonPhaseData.MoonPhase);
     }
 }

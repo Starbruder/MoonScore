@@ -6,6 +6,7 @@ using MoonScore.Services;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using MoonScore.DataConstants;
 
 namespace MoonScore;
 
@@ -37,11 +38,7 @@ public partial class MainWindow : Window
     {
         string date = DateTextBox.Text;
 
-        // Example: Rostock 
-        const double latitude = 54.0924;
-        const double longitude = 12.1407;
-
-        var moonPhaseData = await _moonphaseService.GetMoonPhaseAsync(date, latitude, longitude);
+        var moonPhaseData = await _moonphaseService.GetMoonPhaseAsync(date, RostockData.latitude, RostockData.longitude);
 
         if (moonPhaseData == null)
         {
