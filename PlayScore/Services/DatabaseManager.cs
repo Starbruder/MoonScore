@@ -67,13 +67,12 @@ public sealed class DatabaseManager(SQLiteConnection connection)
 
         while (reader.Read())
         {
-            string mondphase = reader.GetString(0);
-            double averageRating = reader.GetDouble(1);
+            var mondphase = reader.GetString(0);
+            var averageRating = reader.GetDouble(1);
 
             averages[mondphase] = averageRating;
         }
 
         return averages;
     }
-
 }
