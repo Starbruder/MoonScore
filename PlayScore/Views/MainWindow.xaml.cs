@@ -145,7 +145,8 @@ public partial class MainWindow : Window
         var categoryAxis = new CategoryAxis
         {
             Position = AxisPosition.Left, // BarChart uses Left Y-Axis for categories
-            Title = "Moon Phase"
+            Title = "Moon Phase",
+            IsZoomEnabled = false
         };
 
         foreach (var phase in ratings.Keys)
@@ -159,7 +160,8 @@ public partial class MainWindow : Window
             Position = AxisPosition.Bottom,
             Title = "Average Rating",
             Minimum = 0,
-            Maximum = 10
+            Maximum = 10,
+            IsZoomEnabled = false
         };
         plotModel.Axes.Add(valueAxis);
 
