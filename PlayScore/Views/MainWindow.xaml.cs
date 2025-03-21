@@ -6,7 +6,6 @@ using MoonScore.Services;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Media.Imaging;
-using System.Linq;
 
 namespace MoonScore;
 
@@ -16,7 +15,6 @@ namespace MoonScore;
 public partial class MainWindow : Window
 {
     private readonly DatabaseManager _databaseManager;
-
     private readonly MoonphaseService _moonphaseService;
     private readonly GameService _gameService;
 
