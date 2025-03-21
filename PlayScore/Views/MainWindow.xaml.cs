@@ -31,7 +31,6 @@ public partial class MainWindow : Window
         _moonphaseService = moonphaseService;
         _gameService = gameService;
 
-        // Create the plot
         MoonPhasePlot.Model = CreatePlotModel();
     }
 
@@ -40,8 +39,8 @@ public partial class MainWindow : Window
         string date = DateTextBox.Text;
 
         // Example: Rostock 
-        var latitude = 54.0924;
-        var longitude = 12.1407;
+        const double latitude = 54.0924;
+        const double longitude = 12.1407;
 
         var moonPhaseData = await _moonphaseService.GetMoonPhaseAsync(date, latitude, longitude);
 
