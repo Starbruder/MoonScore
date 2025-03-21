@@ -6,6 +6,7 @@ using MoonScore.Services;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using System.Linq;
 
 namespace MoonScore;
 
@@ -87,7 +88,7 @@ public partial class MainWindow : Window
     //    {
     //        if (game.Rating > 0)
     //        {
-    //            await _databaseManager.AddGameToSpieleTable(game);
+    //            await _databaseManager.AddGameToSpieleTableAsync(game);
     //        }
     //    }
     //}
@@ -143,9 +144,7 @@ public partial class MainWindow : Window
             IsZoomEnabled = false
         };
 
-        foreach (var phase in ratings.Keys)
-            categoryAxis.Labels.Add(phase);
-
+        categoryAxis.Labels.AddRange(ratings.Keys);
         plotModel.Axes.Add(categoryAxis);
 
         // Define the X-Axis (Ratings)
@@ -163,7 +162,9 @@ public partial class MainWindow : Window
         var barSeries = new BarSeries { LabelPlacement = LabelPlacement.Inside };
 
         foreach (var rating in ratings.Values)
+        {
             barSeries.Items.Add(new BarItem { Value = rating });
+        }
 
         plotModel.Series.Add(barSeries);
 
