@@ -39,7 +39,7 @@ public partial class App : Application
         //Register Services
         services.AddSingleton<DatabaseManager>();
         services.AddSingleton<MoonphaseService>();
-        services.AddSingleton<MoonphaseTranslator>();
+        services.AddSingleton<MoonphaseTranslationService>();
         services.AddSingleton<GameService>();
 
         // Register Windows/Screens

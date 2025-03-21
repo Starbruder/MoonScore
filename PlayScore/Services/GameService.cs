@@ -11,9 +11,9 @@ public sealed class GameService : IService
     private readonly string apiKey = ConfigurationManager.AppSettings["API_KEY_GAMES"] ?? string.Empty;
     private readonly string ApiUrl;
     private readonly MoonphaseService _moonphaseService;
-    private readonly MoonphaseTranslator _moonphaseTranslator;
+    private readonly MoonphaseTranslationService _moonphaseTranslator;
 
-    public GameService(MoonphaseService moonphaseService, MoonphaseTranslator moonphaseTranslator)
+    public GameService(MoonphaseService moonphaseService, MoonphaseTranslationService moonphaseTranslator)
     {
         _httpClient = new HttpClient();
         ApiUrl = $"https://api.rawg.io/api/games?key={apiKey}&dates=";

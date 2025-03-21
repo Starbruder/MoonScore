@@ -49,7 +49,7 @@ public partial class MainWindow : Window
             return;
         }
 
-        var translator = new MoonphaseTranslator();
+        var translator = new MoonphaseTranslationService();
         MoonPhaseTextBlock.Text = $"Mondphase: {translator.Translate(moonPhaseData.MoonPhase)}";
 
         // Getting Moon-Image
