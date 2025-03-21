@@ -47,4 +47,33 @@ public sealed class DatabaseManager(SQLiteConnection connection)
 
         command.ExecuteNonQuery();
     }
+
+    public Dictionary<string, double> GetAverageRatingPerMondphase()
+    {
+        var averages = new Dictionary<string, double>();
+
+        if (connection.State != System.Data.ConnectionState.Open)
+        {
+            connection.Open();
+        }
+
+        var sql = @"
+        SELECT MondphaseName, AVG(Rating) 
+        FROM Spiele 
+        GROUP BY MondphaseName";
+
+        using var command = new SQLiteCommand(sql, connection);
+        using var reader = command.ExecuteReader();
+
+        while (reader.Read())
+        {
+            string mondphase = reader.GetString(0);
+            double averageRating = reader.GetDouble(1);
+
+            averages[mondphase] = averageRating;
+        }
+
+        return averages;
+    }
+
 }

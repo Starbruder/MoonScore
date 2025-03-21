@@ -95,14 +95,16 @@ public partial class MainWindow : Window
 
     private PlotModel CreatePlotModel()
     {
+        Dictionary<string, double> ratings = _databaseManager.GetAverageRatingPerMondphase();
+
         // Generate sample data, still need method for getting the data from our database
-        Dictionary<string, double> ratings = new Dictionary<string, double>
-            {
-                { "New Moon", 7.5 },
-                { "First Quarter", 8.2 },
-                { "Full Moon", 9.1 },
-                { "Last Quarter", 6.8 }
-            };
+        //Dictionary<string, double> ratings = new Dictionary<string, double>
+        //    {
+        //        { "New Moon", 7.5 },
+        //        { "First Quarter", 8.2 },
+        //        { "Full Moon", 9.1 },
+        //        { "Last Quarter", 6.8 }
+        //    };
 
         var plotModel = new PlotModel { Title = "Game Ratings vs Moon Phases" };
 
