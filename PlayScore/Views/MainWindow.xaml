@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MoonScore"
         xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"
-        Title="PlayScore" Height="900" Width="1600"
+        Title="MoonScore" Height="900" Width="1600"
         Style="{StaticResource MaterialDesignWindow}"
         WindowStartupLocation="CenterScreen"
         Icon="/Views/moonscore_IconLogo.png">
