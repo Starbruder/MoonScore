@@ -35,6 +35,11 @@
             </TextBlock.Effect>
         </TextBlock>
 
-        <Button Content="Start Program" Width="250" Click="StartProgram_Click" Grid.Row="1"  Margin="0,20,0,450"/>
-    </Grid>
+        <Button Content="Start Program"
+                Width="220"
+                Height="35"
+                Click="StartProgram_Click"
+                Grid.Row="1"
+                Margin="0,20,0,450"/>
+	</Grid>
 </Window>
