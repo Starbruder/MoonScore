@@ -3,6 +3,7 @@ using MoonScore.Models;
 using System.Configuration;
 using System.Net.Http;
 using MoonScore.DataConstants;
+using System.Windows;
 
 namespace MoonScore.Services;
 
@@ -38,6 +39,12 @@ public sealed class GameService : IService
             // Deserialize the JSON into a list of games
             var jsonResponse = JsonConvert.DeserializeObject<dynamic>(content);
             var games = new List<GameModel>();
+
+            if (jsonResponse is null || jsonResponse.results is null)
+            {
+                MessageBox.Show("Failed to retrieve game data. Please check your connection or try again.");
+                return [];
+            }
 
             foreach (var game in jsonResponse.results)
             {
