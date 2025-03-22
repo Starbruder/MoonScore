@@ -79,18 +79,6 @@ public partial class MainWindow : Window
         gameData.ForEach(Games.Add);
     }
 
-    //public async void SaveGamesToDatabase(object sender, RoutedEventArgs e)
-    //{
-    //    var games = (ObservableCollection<GameModel>)GamesListBox.ItemsSource;
-    //    foreach (var game in games)
-    //    {
-    //        if (game.Rating > 0)
-    //        {
-    //            await _databaseManager.AddGameToSpieleTableAsync(game);
-    //        }
-    //    }
-    //}
-
     public async void SaveGamesToDatabaseAsync(object sender, RoutedEventArgs e)
     {
         try
