@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MoonScore.Views" xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"
-        Title="BarChartDataWindow" Height="450" Width="750">
+        Title="BarChartDataWindow" Height="500" Width="750">
 
 	<Grid>
-		<oxy:PlotView x:Name="MoonPhasePlot" Height="432" Width="700">
+		<oxy:PlotView x:Name="MoonPhasePlot" Height="400" Width="700">
 			<!--<oxy:PlotView.Background>
 			Transparent
 			</oxy:PlotView.Background>-->
