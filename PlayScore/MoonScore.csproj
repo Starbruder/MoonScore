@@ -10,9 +10,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\Images\background.jpeg" />
-    <None Remove="Assets\Images\background_2.jpeg" />
-    <None Remove="Assets\Images\background_3.jpeg" />
+    <None Remove="Assets\Images\Backgrounds\background.jpeg" />
+    <None Remove="Assets\Images\Backgrounds\background_2.jpeg" />
+    <None Remove="Assets\Images\Backgrounds\background_3.jpeg" />
     <None Remove="Assets\Images\phases\8_FullMoon.png" />
     <None Remove="Views\moonscore_IconLogo.png" />
     <None Remove="Views\viewavatar.png" />
@@ -32,13 +32,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\Images\background.jpeg">
+    <Resource Include="Assets\Images\Backgrounds\background.jpeg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\Images\background_2.jpeg">
+    <Resource Include="Assets\Images\Backgrounds\background_2.jpeg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\Images\background_3.jpeg">
+    <Resource Include="Assets\Images\Backgrounds\background_3.jpeg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Images\phases\8_FullMoon.png">

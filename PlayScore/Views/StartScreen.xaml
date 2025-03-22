@@ -11,7 +11,7 @@
         Icon="/Views/moonscore_IconLogo.png">
 
     <Window.Background>
-		<ImageBrush ImageSource="pack://application:,,,/Assets/Images/background.jpeg" Stretch="UniformToFill"/>
+		<ImageBrush ImageSource="pack://application:,,,/Assets/Images/Backgrounds\background.jpeg" Stretch="UniformToFill"/>
 	</Window.Background>
     
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">

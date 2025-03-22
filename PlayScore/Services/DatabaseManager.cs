@@ -3,7 +3,7 @@ using System.Data.SQLite;
 
 namespace MoonScore.Services;
 
-public sealed class DatabaseManager(SQLiteConnection connection)
+public sealed class DatabaseManager(SQLiteConnection connection) : IService
 {
     private const string databaseName = "MoonScore";
 
