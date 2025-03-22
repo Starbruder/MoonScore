@@ -41,7 +41,7 @@ public partial class MainWindow : Window
     {
         var ratings = _databaseManager.GetAverageRatingPerMondphase();
 
-        var chartModel = ChartRenderer.CreateBarChartModel(ratings);
+        var chartModel = ChartRenderer.CreateBarchartModel(ratings);
         MoonPhasePlot.Model = chartModel;
     }
 
