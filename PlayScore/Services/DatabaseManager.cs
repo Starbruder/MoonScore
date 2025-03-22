@@ -69,48 +69,22 @@ public sealed class DatabaseManager(SQLiteConnection connection)
         }
 
         var sql = @"
-        SELECT MondphaseID, AVG(Rating) 
-        FROM Spiele 
-        GROUP BY MondphaseID;";
+        SELECT m.Name, AVG(s.Rating) 
+        FROM Spiele s
+        JOIN Mondphasen m ON s.MondphaseID = m.Id
+        GROUP BY m.Name;";
 
         using var command = new SQLiteCommand(sql, connection);
         using var reader = command.ExecuteReader();
 
         while (reader.Read())
         {
-            var mondphaseId = reader.GetInt32(0);
+            var mondphaseName = reader.GetString(0);
             var averageRating = reader.GetDouble(1);
-
-            var mondphaseName = GetMoonPhaseName(mondphaseId);
 
             averages[mondphaseName] = averageRating;
         }
 
         return averages;
-    }
-
-    private string GetMoonPhaseName(int mondphaseId)
-    {
-        switch (mondphaseId)
-        {
-            case 1:
-                return "Neumond";
-            case 2:
-                return "Zunehmende Mondsichel";
-            case 3:
-                return "Erstes Viertel";
-            case 4:
-                return "Zunehmender Mond";
-            case 5:
-                return "Vollmond";
-            case 6:
-                return "Abnehmender Mond";
-            case 7:
-                return "Letztes Viertel";
-            case 8:
-                return "Abnehmende Mondsichel";
-            default:
-                return "Unbekannt";
-        }
     }
 }
