@@ -21,7 +21,10 @@ public partial class MainWindow : Window
 
     public ObservableCollection<GameModel> Games { get; } = [];
 
-    public MainWindow(DatabaseManager databaseManager, MoonphaseService moonphaseService, GameService gameService)
+    public MainWindow(
+        DatabaseManager databaseManager,
+        MoonphaseService moonphaseService,
+        GameService gameService)
     {
         InitializeComponent();
 
@@ -40,7 +43,7 @@ public partial class MainWindow : Window
 
         var moonPhaseData = await _moonphaseService.GetMoonPhaseAsync(date, RostockData.latitude, RostockData.longitude);
 
-        if (moonPhaseData == null)
+        if (moonPhaseData is null)
         {
             MessageBox.Show("Failed to retrieve moon phase data. Please check your connection or try again.");
             return;
@@ -66,7 +69,7 @@ public partial class MainWindow : Window
 
         var gameData = await _gameService.GetGamesByReleaseDateAsync(date);
 
-        if (gameData == null)
+        if (gameData is null)
         {
             MessageBox.Show("Failed to retrieve game data. Please check your connection or try again.");
             return;
@@ -94,7 +97,7 @@ public partial class MainWindow : Window
         {
             var games = (ObservableCollection<GameModel>)GamesListBox.ItemsSource;
 
-            if (games == null || !games.Any())
+            if (games is null || !games.Any())
             {
                 MessageBox.Show("No games to save.");
                 return;
