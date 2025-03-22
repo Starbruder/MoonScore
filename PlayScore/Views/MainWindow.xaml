@@ -31,7 +31,7 @@
 
             <TextBlock TextAlignment="Center" Name="MoonPhaseTextBlock" Margin="0,5,0,5" Height="30" FontSize="20"/>
 
-            <Button Content="Get Games" Width="150" Height="30" Margin="10,5,10,0" Click="GetGames"/>
+            <Button Content="Get Games" Width="150" Height="30" Margin="10,5,10,0" Click="GetGamesAsync"/>
 
             <Label Margin="500, 5, 300, 0" Height="30" Foreground="White">
 				Liste der Spiele

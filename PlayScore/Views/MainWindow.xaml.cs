@@ -1,7 +1,4 @@
-﻿using OxyPlot.Axes;
-using OxyPlot.Series;
-using OxyPlot;
-using MoonScore.Models;
+﻿using MoonScore.Models;
 using MoonScore.Services;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -37,7 +34,15 @@ public partial class MainWindow : Window
         _moonPhaseTranslator = moonphaseTranslationService;
         _gameService = gameService;
 
-        MoonPhasePlot.Model = CreatePlotModel();
+        DrawRatingsBarChart();
+    }
+
+    private void DrawRatingsBarChart()
+    {
+        var ratings = _databaseManager.GetAverageRatingPerMondphase();
+
+        var chartModel = ChartRenderer.CreateBarChartModel(ratings);
+        MoonPhasePlot.Model = chartModel;
     }
 
     private async void GetMoonphase(object sender, RoutedEventArgs e)
@@ -71,7 +76,7 @@ public partial class MainWindow : Window
         }
     }
 
-    private async void GetGames(object sender, RoutedEventArgs e)
+    private async void GetGamesAsync(object sender, RoutedEventArgs e)
     {
         string date = DateTextBox.Text;
         GamesListBox.ItemsSource = Games;
@@ -113,58 +118,5 @@ public partial class MainWindow : Window
         {
             MessageBox.Show($"Error saving games: {ex.Message}");
         }
-    }
-
-    private PlotModel CreatePlotModel()
-    {
-        var ratings = _databaseManager.GetAverageRatingPerMondphase();
-
-        // Generate sample data, still need method for getting the data from our database
-        //Dictionary<string, double> ratings = new Dictionary<string, double>
-        //    {
-        //        { "New Moon", 7.5 },
-        //        { "First Quarter", 8.2 },
-        //        { "Full Moon", 9.1 },
-        //        { "Last Quarter", 6.8 }
-        //    };
-
-        var plotModel = new PlotModel { Title = "Game Ratings vs Moon Phases" };
-
-        // Define the Y-Axis (Categories for Moon Phases)
-        var categoryAxis = new CategoryAxis
-        {
-            Position = AxisPosition.Left, // BarChart uses Left Y-Axis for categories
-            Title = "Moon Phase",
-            IsZoomEnabled = false
-        };
-
-        categoryAxis.Labels.AddRange(ratings.Keys);
-        plotModel.Axes.Add(categoryAxis);
-
-        // Define the X-Axis (Ratings)
-        var valueAxis = new LinearAxis
-        {
-            Position = AxisPosition.Bottom,
-            Title = "Average Rating",
-            Minimum = 0,
-            Maximum = 5,
-            IsZoomEnabled = false
-        };
-        plotModel.Axes.Add(valueAxis);
-
-        // Add BarSeries
-        var barSeries = new BarSeries { LabelPlacement = LabelPlacement.Inside };
-
-        foreach (var rating in ratings.Values)
-        {
-            barSeries.Items.Add(new()
-            {
-                Value = rating
-            });
-        }
-
-        plotModel.Series.Add(barSeries);
-
-        return plotModel;
     }
 }
