@@ -15,7 +15,6 @@
     <None Remove="Assets\Images\Backgrounds\background_3.jpeg" />
     <None Remove="Assets\Images\phases\8_FullMoon.png" />
     <None Remove="Views\moonscore_IconLogo.png" />
-    <None Remove="Views\viewavatar.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,7 +44,6 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Views\moonscore_IconLogo.png" />
-    <Resource Include="Views\viewavatar.png" />
   </ItemGroup>
 
 </Project>
