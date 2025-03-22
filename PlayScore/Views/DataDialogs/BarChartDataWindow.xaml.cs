@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoonScore.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,8 +20,23 @@ namespace MoonScore.Views;
 /// </summary>
 public sealed partial class BarChartDataWindow : Window
 {
-    public BarChartDataWindow()
+    private readonly DatabaseManager _databaseManager;
+
+    public BarChartDataWindow(
+        DatabaseManager databaseManager)
     {
         InitializeComponent();
+
+        _databaseManager = databaseManager;
+
+        DrawRatingsBarChart();
+    }
+
+    private void DrawRatingsBarChart()
+    {
+        var ratings = _databaseManager.GetAverageRatingPerMondphase();
+
+        var chartModel = ChartRenderer.CreateBarchartModel(ratings);
+        MoonPhasePlot.Model = chartModel;
     }
 }

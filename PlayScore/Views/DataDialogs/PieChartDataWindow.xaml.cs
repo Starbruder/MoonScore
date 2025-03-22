@@ -22,5 +22,7 @@ public sealed partial class PieChartDataWindow : Window
     public PieChartDataWindow()
     {
         InitializeComponent();
+
+        ChartRenderer.CreateMockPiechartModel();
     }
 }
