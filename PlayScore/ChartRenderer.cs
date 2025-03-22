@@ -62,4 +62,26 @@ public static class ChartRenderer
 
         return plotModel;
     }
+
+    public static PlotModel CreateMockPieChartModel()
+    {
+        var plotModel = new PlotModel { Title = "Mock Pie Chart" };
+
+        var pieSeries = new PieSeries
+        {
+            Slices = {
+                    new("Category A", 40) { IsExploded = true },
+                    new("Category B", 30),
+                    new("Category C", 20),
+                    new("Category D", 10)
+                },
+            InsideLabelFormat = "{0}: {1}%"
+        };
+
+        plotModel.Series.Add(pieSeries);
+
+        // Set the plot model for the PlotView
+        //plotView.Model = plotModel;
+        return plotModel;
+    }
 }
