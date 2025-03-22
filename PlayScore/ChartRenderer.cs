@@ -6,17 +6,8 @@ namespace MoonScore;
 
 public static class ChartRenderer
 {
-    public static PlotModel CreateBarChartModel(Dictionary<string, double> ratings)
+    public static PlotModel CreateBarchartModel(Dictionary<string, double> ratings)
     {
-        // Generate sample data, still need method for getting the data from our database
-        //Dictionary<string, double> ratings = new Dictionary<string, double>
-        //    {
-        //        { "New Moon", 7.5 },
-        //        { "First Quarter", 8.2 },
-        //        { "Full Moon", 9.1 },
-        //        { "Last Quarter", 6.8 }
-        //    };
-
         var plotModel = new PlotModel { Title = "Game Ratings vs Moon Phases" };
 
         // Define the Y-Axis (Categories for Moon Phases)
@@ -47,7 +38,7 @@ public static class ChartRenderer
             LabelPlacement = LabelPlacement.Inside,
             LabelFormatString = "{0:0.000}",  // Display one decimal place for the label
             FontSize = 12,  // Optional: set the label font size
-            LabelColor = OxyColors.Black // Optional: set the label color};
+            LabelColor = OxyColors.Black // Optional: set the label color
         };
 
         foreach (var rating in ratings.Values)
@@ -63,7 +54,7 @@ public static class ChartRenderer
         return plotModel;
     }
 
-    public static PlotModel CreateMockPieChartModel()
+    public static PlotModel CreateMockPiechartModel()
     {
         var plotModel = new PlotModel { Title = "Mock Pie Chart" };
 
@@ -80,8 +71,20 @@ public static class ChartRenderer
 
         plotModel.Series.Add(pieSeries);
 
-        // Set the plot model for the PlotView
-        //plotView.Model = plotModel;
         return plotModel;
+    }
+
+    private static Dictionary<string, double> CreateBarchartMockDataRatings()
+    {
+        // Generate sample data, still need method for getting the data from our database
+        var ratings = new Dictionary<string, double>
+            {
+                { "New Moon", 7.5 },
+                { "First Quarter", 8.2 },
+                { "Full Moon", 9.1 },
+                { "Last Quarter", 6.8 }
+            };
+
+        return ratings;
     }
 }

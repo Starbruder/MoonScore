@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using MoonScore.DataConstants;
+using MoonScore.Views;
 
 namespace MoonScore;
 
@@ -33,16 +34,6 @@ public partial class MainWindow : Window
         _moonphaseService = moonphaseService;
         _moonPhaseTranslator = moonphaseTranslationService;
         _gameService = gameService;
-
-        DrawRatingsBarChart();
-    }
-
-    private void DrawRatingsBarChart()
-    {
-        var ratings = _databaseManager.GetAverageRatingPerMondphase();
-
-        var chartModel = ChartRenderer.CreateBarChartModel(ratings);
-        MoonPhasePlot.Model = chartModel;
     }
 
     private async void GetMoonphase(object sender, RoutedEventArgs e)
@@ -206,5 +197,17 @@ public partial class MainWindow : Window
                 MessageBox.Show($"Error retrieving or saving games for {date}: {ex.Message}");
             }
         }
+    }
+
+    private void Barchart_Click(object sender, RoutedEventArgs e)
+    {
+        var barChartDataWindow = new BarChartDataWindow(_databaseManager);
+        barChartDataWindow.Show();
+    }
+
+    private void Piechart_Click(object sender, RoutedEventArgs e)
+    {
+        var pieChartDataWindow = new PieChartDataWindow();
+        pieChartDataWindow.Show();
     }
 }
