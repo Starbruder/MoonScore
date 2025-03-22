@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoonScore.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,10 +20,13 @@ namespace MoonScore.Views;
 /// </summary>
 public sealed partial class PieChartDataWindow : Window
 {
-    public PieChartDataWindow()
+    public PieChartDataWindow(DatabaseManager databaseManager)
     {
         InitializeComponent();
 
-        ChartRenderer.CreateMockPiechartModel();
+        var ratings = databaseManager.GetAverageRatingPerMondphase();
+
+        var chartModel = ChartRenderer.CreateMockPiechartModel();
+        MoonPhasePlot.Model = chartModel;
     }
 }

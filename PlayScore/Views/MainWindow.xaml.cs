@@ -185,7 +185,7 @@ public partial class MainWindow : Window
 
     private void Piechart_Click(object sender, RoutedEventArgs e)
     {
-        var pieChartDataWindow = new PieChartDataWindow();
+        var pieChartDataWindow = new PieChartDataWindow(_databaseManager);
         pieChartDataWindow.Show();
     }
 }
