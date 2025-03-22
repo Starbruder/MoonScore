@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="BarChartDataWindow" Height="500" Width="750">
 
+	<Window.Background>
+		<ImageBrush ImageSource="pack://application:,,,/Assets/Images/Backgrounds\background_2.jpeg" Stretch="UniformToFill"/>
+	</Window.Background>
+
 	<Grid>
 		<oxy:PlotView x:Name="MoonPhasePlot" Height="400" Width="700">
 			<!--<oxy:PlotView.Background>
