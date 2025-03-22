@@ -42,7 +42,13 @@ public static class ChartRenderer
         plotModel.Axes.Add(valueAxis);
 
         // Add BarSeries
-        var barSeries = new BarSeries { LabelPlacement = LabelPlacement.Inside };
+        var barSeries = new BarSeries
+        {
+            LabelPlacement = LabelPlacement.Inside,
+            LabelFormatString = "{0:0.000}",  // Display one decimal place for the label
+            FontSize = 12,  // Optional: set the label font size
+            LabelColor = OxyColors.Black // Optional: set the label color};
+        };
 
         foreach (var rating in ratings.Values)
         {
