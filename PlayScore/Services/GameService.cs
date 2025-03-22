@@ -8,7 +8,7 @@ namespace MoonScore.Services;
 
 public sealed class GameService : IService
 {
-    private readonly HttpClient _httpClient;
+    private readonly HttpClient _httpClient = new();
     private readonly string apiKey = ConfigurationManager.AppSettings["API_KEY_GAMES"] ?? string.Empty;
     private readonly string ApiUrl;
     private readonly MoonphaseService _moonphaseService;
@@ -16,7 +16,6 @@ public sealed class GameService : IService
 
     public GameService(MoonphaseService moonphaseService, MoonphaseTranslationService moonphaseTranslator)
     {
-        _httpClient = new HttpClient();
         ApiUrl = $"https://api.rawg.io/api/games?key={apiKey}&dates=";
         _moonphaseService = moonphaseService;
         _moonphaseTranslationService = moonphaseTranslator;
@@ -30,11 +29,11 @@ public sealed class GameService : IService
             string url = $"{ApiUrl}{releaseDate},{releaseDate}";
 
             // Send a GET request
-            HttpResponseMessage response = await _httpClient.GetAsync(url);
-            response.EnsureSuccessStatusCode();
+            var responseMessage = await _httpClient.GetAsync(url);
+            responseMessage.EnsureSuccessStatusCode();
 
             // Read the response content
-            string content = await response.Content.ReadAsStringAsync();
+            string content = await responseMessage.Content.ReadAsStringAsync();
 
             // Deserialize the JSON into a list of games
             var jsonResponse = JsonConvert.DeserializeObject<dynamic>(content);
