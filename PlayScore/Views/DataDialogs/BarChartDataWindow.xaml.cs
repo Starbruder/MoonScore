@@ -12,16 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MoonScore.Views
+namespace MoonScore.Views;
+
+/// <summary>
+/// Interaktionslogik für BarChartDataWindow.xaml
+/// </summary>
+public sealed partial class BarChartDataWindow : Window
 {
-    /// <summary>
-    /// Interaktionslogik für BarChartDataWindow.xaml
-    /// </summary>
-    public partial class BarChartDataWindow : Window
+    public BarChartDataWindow()
     {
-        public BarChartDataWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

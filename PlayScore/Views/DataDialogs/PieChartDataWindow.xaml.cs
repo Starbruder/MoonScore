@@ -12,16 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MoonScore.Views
+namespace MoonScore.Views;
+
+/// <summary>
+/// Interaktionslogik für PieChartDataWindow.xaml
+/// </summary>
+public sealed partial class PieChartDataWindow : Window
 {
-    /// <summary>
-    /// Interaktionslogik für PieChartDataWindow.xaml
-    /// </summary>
-    public partial class PieChartDataWindow : Window
+    public PieChartDataWindow()
     {
-        public PieChartDataWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }
