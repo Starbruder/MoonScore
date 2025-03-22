@@ -5,10 +5,6 @@ namespace MoonScore.Services;
 
 public sealed class DatabaseManager(SQLiteConnection connection) : IService
 {
-    private const string databaseName = "MoonScore";
-
-    public static string GetDatabaseName() => ( databaseName + ".db" );
-
     public void ConnectToDatabase()
     {
         if (connection.State == System.Data.ConnectionState.Open)
