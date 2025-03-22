@@ -35,15 +35,15 @@ public sealed class DatabaseManager(SQLiteConnection connection)
         }
 
         var sql = @"
-        INSERT INTO Spiele (ID, Name, Release_Date, Rating, MondphaseName)
-        VALUES (@ID, @Name, @Release_Date, @Rating, @MondphaseName);";
+        INSERT INTO Spiele (ID, Name, ReleaseDate, Rating, MondphaseID)
+        VALUES (@ID, @Name, @ReleaseDate, @Rating, @MondphaseID);";
 
         using var command = new SQLiteCommand(sql, connection);
         command.Parameters.AddWithValue("@ID", game.Id);
         command.Parameters.AddWithValue("@Name", game.Name);
         command.Parameters.AddWithValue("@Rating", game.Rating);
-        command.Parameters.AddWithValue("@Release_Date", game.Released);
-        command.Parameters.AddWithValue("@MondphaseName", game.MondphaseName);
+        command.Parameters.AddWithValue("@ReleaseDate", game.Released);
+        command.Parameters.AddWithValue("@MondphaseID", game.MondphaseID);
 
         await command.ExecuteNonQueryAsync();
     }
@@ -69,21 +69,48 @@ public sealed class DatabaseManager(SQLiteConnection connection)
         }
 
         var sql = @"
-        SELECT MondphaseName, AVG(Rating) 
+        SELECT MondphaseID, AVG(Rating) 
         FROM Spiele 
-        GROUP BY MondphaseName;";
+        GROUP BY MondphaseID;";
 
         using var command = new SQLiteCommand(sql, connection);
         using var reader = command.ExecuteReader();
 
         while (reader.Read())
         {
-            var mondphase = reader.GetString(0);
+            var mondphaseId = reader.GetInt32(0);
             var averageRating = reader.GetDouble(1);
 
-            averages[mondphase] = averageRating;
+            var mondphaseName = GetMoonPhaseName(mondphaseId);
+
+            averages[mondphaseName] = averageRating;
         }
 
         return averages;
+    }
+
+    private string GetMoonPhaseName(int mondphaseId)
+    {
+        switch (mondphaseId)
+        {
+            case 1:
+                return "Neumond";
+            case 2:
+                return "Zunehmende Mondsichel";
+            case 3:
+                return "Erstes Viertel";
+            case 4:
+                return "Zunehmender Mond";
+            case 5:
+                return "Vollmond";
+            case 6:
+                return "Abnehmender Mond";
+            case 7:
+                return "Letztes Viertel";
+            case 8:
+                return "Abnehmende Mondsichel";
+            default:
+                return "Unbekannt";
+        }
     }
 }

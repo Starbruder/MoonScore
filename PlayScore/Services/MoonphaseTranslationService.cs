@@ -2,22 +2,20 @@
 
 public sealed class MoonphaseTranslationService : IService
 {
-    private readonly Dictionary<string, string> _moonPhaseTranslations = new()
+    private readonly Dictionary<string, (int Id, string GermanName)> _moonPhaseData = new()
     {
-        { "NEW_MOON", "Neumond" },
-        { "WAXING_CRESCENT", "Zunehmende Mondsichel" },
-        { "FIRST_QUARTER", "Erstes Viertel" },
-        { "WAXING_GIBBOUS", "Zunehmender Mond" },
-        { "FULL_MOON", "Vollmond" },
-        { "WANING_GIBBOUS", "Abnehmender Mond" },
-        { "LAST_QUARTER", "Letztes Viertel" },
-        { "WANING_CRESCENT", "Abnehmende Mondsichel" }
+        { "NEW_MOON", (1, "Neumond") },
+        { "WAXING_CRESCENT", (2, "Zunehmende Mondsichel") },
+        { "FIRST_QUARTER", (3, "Erstes Viertel") },
+        { "WAXING_GIBBOUS", (4, "Zunehmender Mond") },
+        { "FULL_MOON", (5, "Vollmond") },
+        { "WANING_GIBBOUS", (6, "Abnehmender Mond") },
+        { "LAST_QUARTER", (7, "Letztes Viertel") },
+        { "WANING_CRESCENT", (8, "Abnehmende Mondsichel") }
     };
 
-    public string Translate(string moonPhase)
+    public (int? Id, string? Name) GetMoonPhaseData(string moonPhase)
     {
-        return _moonPhaseTranslations.TryGetValue(moonPhase, out var translation)
-            ? translation
-            : moonPhase; // Return the original name if no translation is found
+        return _moonPhaseData.TryGetValue(moonPhase, out var data) ? data : (null, null);
     }
 }

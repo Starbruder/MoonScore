@@ -54,7 +54,7 @@ public partial class MainWindow : Window
                 return;
             }
 
-            MoonPhaseTextBlock.Text = $"Mondphase: {_moonPhaseTranslator.Translate(moonPhaseData.MoonPhase)}";
+            MoonPhaseTextBlock.Text = $"Mondphase: {_moonPhaseTranslator.GetMoonPhaseData(moonPhaseData.MoonPhase)}";
 
             // Getting Moon-Image
             //const string imagePath = "pack://application:,,,/Assets/Images/phases/";

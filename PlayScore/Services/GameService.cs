@@ -51,11 +51,11 @@ public sealed class GameService : IService
                 string gameReleaseDate = game.released;
                 double gameRating = game.rating;
 
-                string? moonPhaseName = null;
+                int? moonPhaseId = null;
 
                 if (gameRating > 0)
                 {
-                    moonPhaseName = await GetGameMoonPhaseAsync(gameReleaseDate);
+                    moonPhaseId = await GetGameMoonPhaseIdAsync(gameReleaseDate); 
                 }
 
                 games.Add(new()
@@ -64,7 +64,7 @@ public sealed class GameService : IService
                     Name = game.name,
                     Released = game.released,
                     Rating = game.rating,
-                    MondphaseName = moonPhaseName
+                    MondphaseID = moonPhaseId ?? 0 
                 });
             }
 
@@ -77,9 +77,10 @@ public sealed class GameService : IService
         }
     }
 
-    public async Task<string> GetGameMoonPhaseAsync(string date)
+    public async Task<int?> GetGameMoonPhaseIdAsync(string date)
     {
         var moonPhaseData = await _moonphaseService.GetMoonPhaseAsync(date, RostockData.latitude, RostockData.longitude);
-        return _moonphaseTranslationService.Translate(moonPhaseData.MoonPhase);
+        var (moonPhaseId, _) = _moonphaseTranslationService.GetMoonPhaseData(moonPhaseData.MoonPhase);
+        return moonPhaseId; 
     }
 }
