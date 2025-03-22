@@ -1,17 +1,19 @@
-﻿namespace MoonScore.Services;
+﻿using MoonScore.Enums;
+
+namespace MoonScore.Services;
 
 public sealed class MoonphaseTranslationService : IService
 {
     private readonly Dictionary<string, (int Id, string GermanName)> _moonPhaseData = new()
     {
-        { "NEW_MOON", (1, "Neumond") },
-        { "WAXING_CRESCENT", (2, "Zunehmende Mondsichel") },
-        { "FIRST_QUARTER", (3, "Erstes Viertel") },
-        { "WAXING_GIBBOUS", (4, "Zunehmender Mond") },
-        { "FULL_MOON", (5, "Vollmond") },
-        { "WANING_GIBBOUS", (6, "Abnehmender Mond") },
-        { "LAST_QUARTER", (7, "Letztes Viertel") },
-        { "WANING_CRESCENT", (8, "Abnehmende Mondsichel") }
+        { "NEW_MOON",        ( (int)Moonphases.Neumond,              "Neumond") },
+        { "WAXING_CRESCENT", ( (int)Moonphases.ZunehmendeMondsichel, "Zunehmende Mondsichel") },
+        { "FIRST_QUARTER",   ( (int)Moonphases.ErstesViertel,        "Erstes Viertel") },
+        { "WAXING_GIBBOUS",  ( (int)Moonphases.ZunehmenderMond,      "Zunehmender Mond") },
+        { "FULL_MOON",       ( (int)Moonphases.Vollmond,             "Vollmond") },
+        { "WANING_GIBBOUS",  ( (int)Moonphases.AbnehmenderMond,      "Abnehmender Mond") },
+        { "LAST_QUARTER",    ( (int)Moonphases.LetztesViertel,       "Letztes Viertel") },
+        { "WANING_CRESCENT", ( (int)Moonphases.AbnehmendeMondsichel, "Abnehmende Mondsichel") }
     };
 
     public (int? Id, string? Name) GetMoonPhaseData(string moonPhase)
