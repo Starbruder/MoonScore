@@ -45,7 +45,8 @@ public static class ChartRenderer
         {
             barSeries.Items.Add(new()
             {
-                Value = rating
+                Value = rating,
+                Color = OxyColor.FromRgb(143, 80, 255),
             });
         }
 
