@@ -48,6 +48,17 @@ public sealed class DatabaseManager(SQLiteConnection connection)
         await command.ExecuteNonQueryAsync();
     }
 
+    public async Task AddGamesToSpieleTableAsync(ICollection<GameModel> games)
+    {
+        foreach (var game in games)
+        {
+            if (game.Rating > 0)
+            {
+                await AddGameToSpieleTableAsync(game);
+            }
+        }
+    }
+
     public Dictionary<string, double> GetAverageRatingPerMondphase()
     {
         var averages = new Dictionary<string, double>();

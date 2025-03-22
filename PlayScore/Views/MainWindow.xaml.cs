@@ -103,13 +103,7 @@ public partial class MainWindow : Window
                 return;
             }
 
-            foreach (var game in games)
-            {
-                if (game.Rating > 0)
-                {
-                    await _databaseManager.AddGameToSpieleTableAsync(game);
-                }
-            }
+            await _databaseManager.AddGamesToSpieleTableAsync(games);
 
             MessageBox.Show("Games saved successfully!");
         }
