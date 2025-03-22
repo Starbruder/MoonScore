@@ -35,8 +35,9 @@ public sealed class DatabaseManager(SQLiteConnection connection)
             await connection.OpenAsync();
         }
 
-        var sql = "INSERT INTO Spiele (ID, Name, Release_Date, Rating, MondphaseName) " +
-                     "VALUES (@ID, @Name, @Release_Date, @Rating, @MondphaseName);";
+        var sql = @"
+        INSERT INTO Spiele (ID, Name, Release_Date, Rating, MondphaseName)
+        VALUES (@ID, @Name, @Release_Date, @Rating, @MondphaseName);";
 
         using var command = new SQLiteCommand(sql, connection);
         command.Parameters.AddWithValue("@ID", game.Id);
@@ -71,7 +72,7 @@ public sealed class DatabaseManager(SQLiteConnection connection)
         var sql = @"
         SELECT MondphaseName, AVG(Rating) 
         FROM Spiele 
-        GROUP BY MondphaseName";
+        GROUP BY MondphaseName;";
 
         using var command = new SQLiteCommand(sql, connection);
         using var reader = command.ExecuteReader();
