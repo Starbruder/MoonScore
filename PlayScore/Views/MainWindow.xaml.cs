@@ -158,7 +158,10 @@ public partial class MainWindow : Window
 
         foreach (var rating in ratings.Values)
         {
-            barSeries.Items.Add(new BarItem { Value = rating });
+            barSeries.Items.Add(new()
+            {
+                Value = rating
+            });
         }
 
         plotModel.Series.Add(barSeries);
