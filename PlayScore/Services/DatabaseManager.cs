@@ -5,7 +5,7 @@ namespace MoonScore.Services;
 
 public sealed class DatabaseManager(SQLiteConnection connection)
 {
-    private const string databaseName = "PlayScore";
+    private const string databaseName = "MoonScore";
 
     public static string GetDatabaseName() => ( databaseName + ".db" );
 
