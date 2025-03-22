@@ -45,7 +45,7 @@
                  VerticalAlignment="Stretch" 
                  DisplayMemberPath="Name" />
             </Grid>
-            <Button Content="Save Games to Database" Width="250" Height="30" Margin="10,5,10,0" Click="SaveGamesToDatabaseAsync"/>
+            <Button Content="Save Games to Database" Width="250" Height="30" Margin="10,5,10,10" Click="SaveGamesToDatabaseAsync"/>
             <Grid>
 				<oxy:PlotView x:Name="MoonPhasePlot" Height="500" Width="700">
 					<!--<oxy:PlotView.Background>
