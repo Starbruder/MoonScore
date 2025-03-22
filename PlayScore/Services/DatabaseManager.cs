@@ -1,5 +1,4 @@
 ﻿using MoonScore.Models;
-using System.Data.SqlClient;
 using System.Data.SQLite;
 
 namespace MoonScore.Services;
