@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MoonScore.Views" xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"
-        Title="BarChartDataWindow" Height="500" Width="750">
+        Title="MoonScore Bar Chart" Height="500" Width="750" ResizeMode="CanMinimize">
 
 	<Window.Background>
 		<ImageBrush ImageSource="pack://application:,,,/Assets/Images/Backgrounds\background_2.jpeg" Stretch="UniformToFill"/>

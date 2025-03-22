@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MoonScore.Views" xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"
-        Title="PieChartDataWindow" Height="500" Width="800">
+        Title="MoonScore Pie Chart" Height="500" Width="800" ResizeMode="CanMinimize">
 
 	<Window.Background>
 		<ImageBrush ImageSource="pack://application:,,,/Assets/Images/Backgrounds\background_2.jpeg" Stretch="UniformToFill"/>
