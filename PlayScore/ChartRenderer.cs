@@ -1,7 +1,6 @@
 ﻿using OxyPlot.Series;
 using OxyPlot;
 using OxyPlot.Axes;
-using System.Reflection;
 
 namespace MoonScore;
 
@@ -9,7 +8,7 @@ public static class ChartRenderer
 {
     private const string ChartTitle = "Game Ratings vs Moon Phases";
 
-    public static PlotModel CreateBarchartModel(Dictionary<string, double> ratings)
+    public static PlotModel CreateBarchartModel(IEnumerable<KeyValuePair<string, double>> keyValuePairs)
     {
         var plotModel = new PlotModel { Title = ChartTitle };
 
@@ -21,7 +20,7 @@ public static class ChartRenderer
             IsZoomEnabled = false
         };
 
-        categoryAxis.Labels.AddRange(ratings.Keys);
+        categoryAxis.Labels.AddRange(keyValuePairs.Select(pair => pair.Key));
         plotModel.Axes.Add(categoryAxis);
 
         // Define the X-Axis (Ratings)
@@ -51,7 +50,7 @@ public static class ChartRenderer
 
         int index = 0; // Used to modify shades
 
-        foreach (var rating in ratings.Values)
+        foreach (var pair in keyValuePairs)
         {
             // Generate a slightly different shade for each slice
             byte r = (byte)Math.Min(baseR + index * 10, 255);  // Increase Red slightly
@@ -60,7 +59,7 @@ public static class ChartRenderer
 
             barSeries.Items.Add(new()
             {
-                Value = rating,
+                Value = pair.Value,
                 Color = OxyColor.FromRgb(r, g, b),
                 //Color = OxyColor.FromRgb(143, 80, 255),
             });
@@ -73,7 +72,7 @@ public static class ChartRenderer
         return plotModel;
     }
 
-    public static PlotModel CreatePiechartModel(Dictionary<string, long> ratings)
+    public static PlotModel CreatePiechartModel(IEnumerable<KeyValuePair<string, long>> keyValuePairs)
     {
         var plotModel = new PlotModel { Title = ChartTitle };
 
@@ -86,14 +85,14 @@ public static class ChartRenderer
 
         int index = 0; // Used to modify shades
 
-        foreach (var rating in ratings)
+        foreach (var pair in keyValuePairs)
         {
             // Generate a slightly different shade for each slice
             byte r = (byte)Math.Min(baseR + index * 10, 255);  // Increase Red slightly
             byte g = (byte)Math.Min(baseG + index * 12, 255);  // Increase Green slightly
             byte b = (byte)Math.Min(baseB + index * 15, 255);  // Increase Blue slightly
 
-            var pieSlice = new PieSlice(rating.Key, rating.Value)
+            var pieSlice = new PieSlice(pair.Key, pair.Value)
             {
                 // Tried adding/setting slightly diffrent color shades for each slice
                 Fill = OxyColor.FromRgb(r, g, b),

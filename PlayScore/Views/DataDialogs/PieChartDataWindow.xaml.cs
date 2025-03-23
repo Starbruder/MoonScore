@@ -24,9 +24,9 @@ public sealed partial class PieChartDataWindow : Window
     {
         InitializeComponent();
 
-        var ratings = databaseManager.GetCountOfGamesPerMoonphase();
+        var gamesPerMoonPhase = databaseManager.GetCountOfGamesPerMoonphase();
 
-        var chartModel = ChartRenderer.CreatePiechartModel(ratings);
+        var chartModel = ChartRenderer.CreatePiechartModel(gamesPerMoonPhase);
         MoonPhasePlot.Model = chartModel;
     }
 }
