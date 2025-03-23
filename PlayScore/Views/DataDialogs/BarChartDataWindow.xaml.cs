@@ -34,7 +34,7 @@ public sealed partial class BarChartDataWindow : Window
 
     private void DrawRatingsBarChart()
     {
-        var ratings = _databaseManager.GetAverageRatingPerMondphase();
+        var ratings = _databaseManager.GetAverageRatingsPerMondphases();
 
         var chartModel = ChartRenderer.CreateBarchartModel(ratings);
         MoonPhasePlot.Model = chartModel;

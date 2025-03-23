@@ -55,7 +55,7 @@ public sealed class DatabaseManager(SQLiteConnection connection) : IService
         }
     }
 
-    public Dictionary<string, double> GetAverageRatingPerMondphase()
+    public Dictionary<string, double> GetAverageRatingsPerMondphases()
     {
         var averages = new Dictionary<string, double>();
 
