@@ -1,8 +1,6 @@
 ﻿using OxyPlot.Series;
 using OxyPlot;
 using OxyPlot.Axes;
-using System.Buffers.Text;
-using System;
 
 namespace MoonScore;
 
@@ -45,13 +43,28 @@ public static class ChartRenderer
             LabelColor = OxyColors.Black // Optional: set the label color
         };
 
+        // Base color (RGB 103, 58, 183)
+        byte baseR = 103;
+        byte baseG = 58;
+        byte baseB = 183;
+
+        int index = 0; // Used to modify shades
+
         foreach (var rating in ratings.Values)
         {
+            // Generate a slightly different shade for each slice
+            byte r = (byte)Math.Min(baseR + index * 10, 255);  // Increase Red slightly
+            byte g = (byte)Math.Min(baseG + index * 12, 255);  // Increase Green slightly
+            byte b = (byte)Math.Min(baseB + index * 15, 255);  // Increase Blue slightly
+
             barSeries.Items.Add(new()
             {
                 Value = rating,
-                Color = OxyColor.FromRgb(143, 80, 255),
+                Color = OxyColor.FromRgb(r, g, b),
+                //Color = OxyColor.FromRgb(143, 80, 255),
             });
+
+            index++; // Increment index for next slice
         }
 
         plotModel.Series.Add(barSeries);
