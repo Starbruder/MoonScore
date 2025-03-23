@@ -59,26 +59,33 @@ public sealed class DatabaseManager(SQLiteConnection connection) : IService
     {
         var averages = new Dictionary<string, double>();
 
-        if (connection.State != System.Data.ConnectionState.Open)
+        try
         {
-            connection.Open();
+            if (connection.State != System.Data.ConnectionState.Open)
+            {
+                connection.Open();
+            }
+
+            var sql = @"
+            SELECT m.Name, AVG(s.Rating) 
+            FROM Spiele s
+            JOIN Mondphasen m ON s.MondphaseID = m.Id
+            GROUP BY m.Name;";
+
+            using var command = new SQLiteCommand(sql, connection);
+            using var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                var mondphaseName = reader.GetString(0);
+                var averageRating = reader.GetDouble(1);
+
+                averages[mondphaseName] = averageRating;
+            }
         }
-
-        var sql = @"
-        SELECT m.Name, AVG(s.Rating) 
-        FROM Spiele s
-        JOIN Mondphasen m ON s.MondphaseID = m.Id
-        GROUP BY m.Name;";
-
-        using var command = new SQLiteCommand(sql, connection);
-        using var reader = command.ExecuteReader();
-
-        while (reader.Read())
+        catch (Exception ex)
         {
-            var mondphaseName = reader.GetString(0);
-            var averageRating = reader.GetDouble(1);
-
-            averages[mondphaseName] = averageRating;
+            Console.WriteLine($"Error occurred: {ex.Message}");
         }
 
         return averages;
@@ -101,7 +108,6 @@ public sealed class DatabaseManager(SQLiteConnection connection) : IService
             JOIN Mondphasen m ON s.MondphaseID = m.Id
             GROUP BY m.Name;";
 
-            // Use the connection and command to execute the query
             using var command = new SQLiteCommand(sql, connection);
             using var reader = command.ExecuteReader();
 
@@ -115,7 +121,6 @@ public sealed class DatabaseManager(SQLiteConnection connection) : IService
         }
         catch (Exception ex)
         {
-            // Log or handle the exception as needed
             Console.WriteLine($"Error occurred: {ex.Message}");
         }
 
