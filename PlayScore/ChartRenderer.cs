@@ -136,15 +136,15 @@ public static class ChartRenderer
         return plotModel;
     }
 
-    private static Dictionary<string, double> CreateBarchartMockDataRatings()
+    private static List<KeyValuePair<string, double>> CreateBarchartMockDataRatings()
     {
         // Generate sample data, still need method for getting the data from our database
-        var ratings = new Dictionary<string, double>
+        var ratings = new List<KeyValuePair<string, double>>
             {
-                { "New Moon", 7.5 },
-                { "First Quarter", 8.2 },
-                { "Full Moon", 9.1 },
-                { "Last Quarter", 6.8 }
+                new("New Moon", 7.5),
+                new("First Quarter", 8.2),
+                new("Full Moon", 9.1),
+                new("Last Quarter", 6.8)
             };
 
         return ratings;
