@@ -82,7 +82,7 @@ public static class ChartRenderer
             var pieSlice = new PieSlice(rating.Key, rating.Value)
             {
                 // Tried adding/setting slightly diffrent color shades for each slice
-                //Fill = OxyColor.FromRgb(r, g, b),
+                Fill = OxyColor.FromRgb(r, g, b),
             };
 
             pieSlices.Add(pieSlice);
