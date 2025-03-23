@@ -83,4 +83,42 @@ public sealed class DatabaseManager(SQLiteConnection connection) : IService
 
         return averages;
     }
+
+    public Dictionary<string, long> GetCountOfGamesPerMoonphase()
+    {
+        var counts = new Dictionary<string, long>();
+
+        try
+        {
+            if (connection.State != System.Data.ConnectionState.Open)
+            {
+                connection.Open();
+            }
+
+            var sql = @"
+            SELECT m.Name, COUNT(s.Id) AS GameCount
+            FROM Spiele s
+            JOIN Mondphasen m ON s.MondphaseID = m.Id
+            GROUP BY m.Name;";
+
+            // Use the connection and command to execute the query
+            using var command = new SQLiteCommand(sql, connection);
+            using var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                var mondphaseName = reader.GetString(0);
+                var gameCount = reader.GetInt64(1);
+
+                counts[mondphaseName] = gameCount;
+            }
+        }
+        catch (Exception ex)
+        {
+            // Log or handle the exception as needed
+            Console.WriteLine($"Error occurred: {ex.Message}");
+        }
+
+        return counts;
+    }
 }
