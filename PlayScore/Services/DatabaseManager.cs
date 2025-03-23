@@ -93,7 +93,8 @@ public sealed class DatabaseManager(SQLiteConnection connection) : IService
             SELECT m.Name, COUNT(s.Id) AS GameCount
             FROM Spiele s
             JOIN Mondphasen m ON s.MondphaseID = m.Id
-            GROUP BY m.Name;";
+            GROUP BY m.Name
+            ORDER BY m.Id;";
 
         using var command = new SQLiteCommand(sql, connection);
         using var reader = command.ExecuteReader();
