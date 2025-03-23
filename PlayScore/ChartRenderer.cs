@@ -1,6 +1,7 @@
 ﻿using OxyPlot.Series;
 using OxyPlot;
 using OxyPlot.Axes;
+using System.Globalization;
 
 namespace MoonScore;
 
@@ -74,14 +75,18 @@ public static class ChartRenderer
 
     public static PlotModel CreatePiechartModel(IEnumerable<KeyValuePair<string, long>> keyValuePairs)
     {
-        var plotModel = new PlotModel { Title = ChartTitle };
+        var plotModel = new PlotModel
+        {
+            Title = ChartTitle,
+            TextColor = OxyColor.FromRgb(245, 245, 245),
+            TitleFontSize = 20,
+            TitlePadding = 10,
+        };
 
         var pieSlices = new List<PieSlice>();
 
-        // Base color (RGB 103, 58, 183)
-        byte baseR = 103;
-        byte baseG = 58;
-        byte baseB = 183;
+        // Base color ( RGB: 103, 58, 183 )
+        byte baseR = 103, baseG = 58, baseB = 183;
 
         int index = 0; // Used to modify shades
 
@@ -106,9 +111,13 @@ public static class ChartRenderer
         // Create the PieSeries and add slices
         var pieSeries = new PieSeries
         {
+            StrokeThickness = 1,
+            InsideLabelPosition = 0.85, // Controls positioning of labels, inside the pie
+            AngleSpan = 330,
             Slices = pieSlices,
             InsideLabelFormat = "{0}: {1}",
-            StrokeThickness = 1
+            StartAngle = 251,
+            InsideLabelColor = OxyColors.Black,
         };
 
         plotModel.Series.Add(pieSeries);

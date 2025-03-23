@@ -11,11 +11,21 @@
 		<ImageBrush ImageSource="pack://application:,,,/Assets/Images/Backgrounds\background_2.jpeg" Stretch="UniformToFill"/>
 	</Window.Background>
 
-	<Grid>
-		<oxy:PlotView x:Name="MoonPhasePlot" Height="400" Width="700">
-			<!--<oxy:PlotView.Background>
+	<Grid Margin="0,-5,0,0">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<!-- Row for top-aligned content (Auto size) -->
+			<RowDefinition Height="*"/>
+			<!-- Row for the rest of the content (fill remaining space) -->
+		</Grid.RowDefinitions>
+
+		<oxy:PlotView x:Name="MoonPhasePlot" Height="350" Width="500">
+			<oxy:PlotView.Background>
 				Transparent
-			</oxy:PlotView.Background>-->
+			</oxy:PlotView.Background>
+			<oxy:PlotView.Effect>
+				<DropShadowEffect Color="#e03f7f" BlurRadius="100" Direction="180" ShadowDepth="10"/>
+			</oxy:PlotView.Effect>
 		</oxy:PlotView>
 	</Grid>
 </Window>
