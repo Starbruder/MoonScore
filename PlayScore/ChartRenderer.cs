@@ -73,7 +73,7 @@ public static class ChartRenderer
         return plotModel;
     }
 
-    public static PlotModel CreatePiechartModel(Dictionary<string, double> ratings)
+    public static PlotModel CreatePiechartModel(Dictionary<string, long> ratings)
     {
         var plotModel = new PlotModel { Title = ChartTitle };
 
@@ -108,7 +108,7 @@ public static class ChartRenderer
         var pieSeries = new PieSeries
         {
             Slices = pieSlices,
-            InsideLabelFormat = "{0:0.00}: {1}",
+            InsideLabelFormat = "{0}: {1}",
             StrokeThickness = 1
         };
 

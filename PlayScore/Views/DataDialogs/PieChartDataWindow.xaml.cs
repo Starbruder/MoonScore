@@ -24,7 +24,7 @@ public sealed partial class PieChartDataWindow : Window
     {
         InitializeComponent();
 
-        var ratings = databaseManager.GetAverageRatingPerMondphase();
+        var ratings = databaseManager.GetCountOfGamesPerMoonphase();
 
         var chartModel = ChartRenderer.CreatePiechartModel(ratings);
         MoonPhasePlot.Model = chartModel;
