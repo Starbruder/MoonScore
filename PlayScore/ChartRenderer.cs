@@ -1,14 +1,18 @@
 ﻿using OxyPlot.Series;
 using OxyPlot;
 using OxyPlot.Axes;
+using System.Buffers.Text;
+using System;
 
 namespace MoonScore;
 
 public static class ChartRenderer
 {
+    private const string ChartTitle = "Game Ratings vs Moon Phases";
+
     public static PlotModel CreateBarchartModel(Dictionary<string, double> ratings)
     {
-        var plotModel = new PlotModel { Title = "Game Ratings vs Moon Phases" };
+        var plotModel = new PlotModel { Title = ChartTitle };
 
         // Define the Y-Axis (Categories for Moon Phases)
         var categoryAxis = new CategoryAxis
@@ -55,7 +59,51 @@ public static class ChartRenderer
         return plotModel;
     }
 
-    public static PlotModel CreateMockPiechartModel()
+    public static PlotModel CreatePiechartModel(Dictionary<string, double> ratings)
+    {
+        var plotModel = new PlotModel { Title = "Pie Chart with Different Shades" };
+
+        var pieSlices = new List<PieSlice>();
+
+        // Base color (RGB 103, 58, 183)
+        byte baseR = 103;
+        byte baseG = 58;
+        byte baseB = 183;
+
+        int index = 0; // Used to modify shades
+
+        foreach (var rating in ratings)
+        {
+            // Generate a slightly different shade for each slice
+            byte r = (byte)Math.Min(baseR + index * 10, 255);  // Increase Red slightly
+            byte g = (byte)Math.Min(baseG + index * 12, 255);  // Increase Green slightly
+            byte b = (byte)Math.Min(baseB + index * 15, 255);  // Increase Blue slightly
+
+            var pieSlice = new PieSlice(rating.Key, rating.Value)
+            {
+                // Tried adding/setting slightly diffrent color shades for each slice
+                //Fill = OxyColor.FromRgb(r, g, b),
+            };
+
+            pieSlices.Add(pieSlice);
+
+            index++; // Increment index for next slice
+        }
+
+        // Create the PieSeries and add slices
+        var pieSeries = new PieSeries
+        {
+            Slices = pieSlices,
+            InsideLabelFormat = "{0:0.00}: {1}",
+            StrokeThickness = 1
+        };
+
+        plotModel.Series.Add(pieSeries);
+
+        return plotModel;
+    }
+
+    private static PlotModel CreateMockPiechartModel()
     {
         var plotModel = new PlotModel { Title = "Mock Pie Chart" };
 
