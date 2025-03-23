@@ -92,53 +92,12 @@ public sealed class DatabaseManager(SQLiteConnection connection) : IService
         return averages;
     }
 
-    //public Dictionary<string, long> GetCountOfGamesPerMoonphase()
-    //{
-    //    var counts = new Dictionary<string, long>();
-
-    //    try
-    //    {
-    //        if (connection.State != System.Data.ConnectionState.Open)
-    //        {
-    //            connection.Open();
-    //        }
-
-    //        var sql = @"
-    //        SELECT m.Name, COUNT(s.Id) AS GameCount
-    //        FROM Spiele s
-    //        JOIN Mondphasen m ON s.MondphaseID = m.Id
-    //        GROUP BY m.Name;";
-
-    //        using var command = new SQLiteCommand(sql, connection);
-    //        using var reader = command.ExecuteReader();
-
-    //        while (reader.Read())
-    //        {
-    //            var mondphaseName = reader.GetString(0);
-    //            var gameCount = reader.GetInt64(1);
-
-    //            counts[mondphaseName] = gameCount;
-    //        }
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        Console.WriteLine($"Error occurred: {ex.Message}");
-    //    }
-
-    //    return counts;
-    //}
-
-    public (Moonphases Phase, long Count)[] GetCountOfGamesPerMoonphase()
+    public Dictionary<string, long> GetCountOfGamesPerMoonphase()
     {
-        // Get the number of values in the Moonphases enum
-        int phaseCount = Enum.GetValues<Moonphases>().Length;
-
-        // Create an array with the size based on the enum count
-        var moonPhaseCounts = new (Moonphases, long)[phaseCount];
+        var counts = new Dictionary<string, long>();
 
         try
         {
-            // Open the connection if it's not already open
             if (connection.State != System.Data.ConnectionState.Open)
             {
                 connection.Open();
@@ -150,34 +109,57 @@ public sealed class DatabaseManager(SQLiteConnection connection) : IService
             JOIN Mondphasen m ON s.MondphaseID = m.Id
             GROUP BY m.Name;";
 
-            using (var command = new SQLiteCommand(sql, connection))
-            using (var reader = command.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    var mondphaseName = reader.GetString(0);
-                    var gameCount = reader.GetInt64(1);
+            using var command = new SQLiteCommand(sql, connection);
+            using var reader = command.ExecuteReader();
 
-                    // Try to parse the moon phase name into an enum
-                    if (Enum.TryParse(mondphaseName.Replace(" ", ""), true, out Moonphases phase))
-                    {
-                        // Use the enum value as an index (adjust by -1 to align with array index)
-                        moonPhaseCounts[(int)phase - 1] = (phase, gameCount);
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Unknown moon phase: {mondphaseName}");
-                    }
-                }
+            while (reader.Read())
+            {
+                var mondphaseName = reader.GetString(0);
+                var gameCount = reader.GetInt64(1);
+
+                counts[mondphaseName] = gameCount;
             }
         }
         catch (Exception ex)
         {
-            // Log or handle the exception
             Console.WriteLine($"Error occurred: {ex.Message}");
         }
 
-        return moonPhaseCounts;
+        return counts;
     }
 
+    //public IEnumerable<(Moonphases Phase, long Count)> GetCountOfGamesPerMoonphase()
+    //{
+    //    if (connection.State != System.Data.ConnectionState.Open)
+    //    {
+    //        connection.Open();
+    //    }
+
+    //    var sql = @"
+    //        SELECT m.Name, COUNT(s.Id) AS GameCount
+    //        FROM Spiele s
+    //        JOIN Mondphasen m ON s.MondphaseID = m.Id
+    //        GROUP BY m.Name;";
+
+    //    using var command = new SQLiteCommand(sql, connection);
+    //    using var reader = command.ExecuteReader();
+
+    //    while (reader.Read())
+    //    {
+    //        var mondphaseName = reader.GetString(0);
+    //        var gameCount = reader.GetInt64(1);
+
+    //        // Clean the phase name and try to parse it into an enum value
+    //        string cleanedName = mondphaseName.Replace(" ", "");
+    //        bool isParsed = Enum.TryParse(cleanedName, true, out Moonphases phase);
+
+    //        if (isParsed)
+    //        {
+    //            // Yield the result without allocating a collection
+    //            yield return (phase, gameCount);
+    //        }
+
+    //        Console.WriteLine($"Unknown moon phase: {mondphaseName}");
+    //    }
+    //}
 }
