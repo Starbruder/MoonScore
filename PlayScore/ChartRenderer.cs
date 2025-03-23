@@ -34,10 +34,11 @@ public static class ChartRenderer
         };
         plotModel.Axes.Add(valueAxis);
 
+        var labelFormatDecimals = "{0:0.000}";
         var barSeries = new BarSeries
         {
             LabelPlacement = LabelPlacement.Inside,
-            LabelFormatString = "{0:0.000}", // Display one decimal place for the label
+            LabelFormatString = labelFormatDecimals,
             FontSize = 12,
             LabelColor = OxyColors.Black
         };
@@ -50,9 +51,10 @@ public static class ChartRenderer
         foreach (var pair in keyValuePairs)
         {
             // Generate a slightly different shade for each slice
-            byte r = (byte)Math.Min(baseR + index * 10, 255);  // Increase Red slightly
-            byte g = (byte)Math.Min(baseG + index * 12, 255);  // Increase Green slightly
-            byte b = (byte)Math.Min(baseB + index * 15, 255);  // Increase Blue slightly
+            const byte maxValue = byte.MaxValue;
+            byte r = (byte)Math.Min(baseR + index * 10, maxValue);  // Increase Red slightly
+            byte g = (byte)Math.Min(baseG + index * 12, maxValue);  // Increase Green slightly
+            byte b = (byte)Math.Min(baseB + index * 15, maxValue);  // Increase Blue slightly
 
             barSeries.Items.Add(new()
             {
@@ -88,9 +90,10 @@ public static class ChartRenderer
         foreach (var pair in keyValuePairs)
         {
             // Generate a slightly different shade for each slice
-            var r = (byte)Math.Min(baseR + index * 10, 255);  // Increase Red slightly
-            var g = (byte)Math.Min(baseG + index * 12, 255);  // Increase Green slightly
-            var b = (byte)Math.Min(baseB + index * 15, 255);  // Increase Blue slightly
+            const byte maxValue = byte.MaxValue;
+            var r = (byte)Math.Min(baseR + index * 10, maxValue);  // Increase Red slightly
+            var g = (byte)Math.Min(baseG + index * 12, maxValue);  // Increase Green slightly
+            var b = (byte)Math.Min(baseB + index * 15, maxValue);  // Increase Blue slightly
 
             var pieSlice = new PieSlice(pair.Key, pair.Value)
             {
