@@ -28,7 +28,7 @@ public static class ChartRenderer
         {
             Position = AxisPosition.Bottom,
             Title = "Average Rating",
-            Minimum = 0,
+            Minimum = 1,
             Maximum = 5,
             IsZoomEnabled = false
         };
