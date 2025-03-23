@@ -136,10 +136,10 @@ public static class ChartRenderer
         return plotModel;
     }
 
-    private static List<KeyValuePair<string, double>> CreateBarchartMockDataRatings()
+    private static KeyValuePair<string, double>[] CreateBarchartMockDataRatings()
     {
         // Generate sample data, still need method for getting the data from our database
-        var ratings = new List<KeyValuePair<string, double>>
+        var ratings = new KeyValuePair<string, double>[]
             {
                 new("New Moon", 7.5),
                 new("First Quarter", 8.2),
