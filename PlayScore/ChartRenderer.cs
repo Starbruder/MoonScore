@@ -1,7 +1,6 @@
 ﻿using OxyPlot.Series;
 using OxyPlot;
 using OxyPlot.Axes;
-using System.Globalization;
 
 namespace MoonScore;
 
@@ -44,12 +43,10 @@ public static class ChartRenderer
             LabelColor = OxyColors.Black // Optional: set the label color
         };
 
-        // Base color (RGB 103, 58, 183)
-        byte baseR = 103;
-        byte baseG = 58;
-        byte baseB = 183;
+        // Base color ( RGB: 103, 58, 183 )
+        byte baseR = 103, baseG = 58, baseB = 183;
 
-        int index = 0; // Used to modify shades
+        uint index = 0; // Used to modify shades
 
         foreach (var pair in keyValuePairs)
         {
@@ -62,7 +59,6 @@ public static class ChartRenderer
             {
                 Value = pair.Value,
                 Color = OxyColor.FromRgb(r, g, b),
-                //Color = OxyColor.FromRgb(143, 80, 255),
             });
 
             index++; // Increment index for next slice
@@ -88,7 +84,7 @@ public static class ChartRenderer
         // Base color ( RGB: 103, 58, 183 )
         byte baseR = 103, baseG = 58, baseB = 183;
 
-        int index = 0; // Used to modify shades
+        uint index = 0; // Used to modify shades
 
         foreach (var pair in keyValuePairs)
         {
@@ -99,7 +95,6 @@ public static class ChartRenderer
 
             var pieSlice = new PieSlice(pair.Key, pair.Value)
             {
-                // Tried adding/setting slightly diffrent color shades for each slice
                 Fill = OxyColor.FromRgb(r, g, b),
             };
 
@@ -151,12 +146,12 @@ public static class ChartRenderer
     {
         // Generate sample data, still need method for getting the data from our database
         var ratings = new KeyValuePair<string, double>[]
-            {
-                new("New Moon", 7.5),
-                new("First Quarter", 8.2),
-                new("Full Moon", 9.1),
-                new("Last Quarter", 6.8)
-            };
+        {
+            new("New Moon", 7.5),
+            new("First Quarter", 8.2),
+            new("Full Moon", 9.1),
+            new("Last Quarter", 6.8)
+        };
 
         return ratings;
     }
