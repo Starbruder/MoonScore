@@ -1,6 +1,7 @@
 ﻿using OxyPlot.Series;
 using OxyPlot;
 using OxyPlot.Axes;
+using System.Reflection;
 
 namespace MoonScore;
 
@@ -74,7 +75,7 @@ public static class ChartRenderer
 
     public static PlotModel CreatePiechartModel(Dictionary<string, double> ratings)
     {
-        var plotModel = new PlotModel { Title = "Pie Chart with Different Shades" };
+        var plotModel = new PlotModel { Title = ChartTitle };
 
         var pieSlices = new List<PieSlice>();
 
