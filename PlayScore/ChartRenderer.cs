@@ -129,13 +129,15 @@ public static class ChartRenderer
     {
         var plotModel = new PlotModel { Title = "Mock Pie Chart" };
 
+        var mockData = CreateMockDataRatings();
+        
         var pieSeries = new PieSeries
         {
             Slices = {
-                    new("Category A", 40) { IsExploded = true },
-                    new("Category B", 30),
-                    new("Category C", 20),
-                    new("Category D", 10)
+                    new(mockData[0].Key, mockData[0].Value) { IsExploded = true },
+                    new(mockData[1].Key, mockData[1].Value),
+                    new(mockData[2].Key, mockData[2].Value),
+                    new(mockData[3].Key, mockData[3].Value)
                 },
             InsideLabelFormat = "{0}: {1}%"
         };
@@ -145,7 +147,7 @@ public static class ChartRenderer
         return plotModel;
     }
 
-    private static KeyValuePair<string, double>[] CreateBarchartMockDataRatings()
+    private static KeyValuePair<string, double>[] CreateMockDataRatings()
     {
         // Generate sample data, still need method for getting the data from our database
         var ratings = new KeyValuePair<string, double>[]
