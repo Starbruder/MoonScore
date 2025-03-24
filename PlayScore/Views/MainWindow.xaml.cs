@@ -113,7 +113,7 @@ public partial class MainWindow : Window
 
     public async void AddAllGamesToDatabase(object sender, RoutedEventArgs e)
     {
-        List<string> dateStrings = new List<string>
+        var dateStrings = new string[]
         {
             "2005-01-11", "2005-03-22", "2005-10-18", "2006-03-20", "2006-11-07",
             "2006-11-19", "2007-08-21", "2007-11-01", "2007-11-05", "2007-11-13",
@@ -138,7 +138,7 @@ public partial class MainWindow : Window
             "2024-01-26", "2024-02-29"
         };
 
-        List<string> moreDateStrings = new List<string>
+        var moreDateStrings = new string[]
         {
             "2004-11-09", "2005-02-22", "2005-05-03", "2006-04-23", "2006-07-28",
             "2007-05-08", "2007-09-25", "2008-01-22", "2008-03-25", "2009-04-13",
@@ -151,7 +151,7 @@ public partial class MainWindow : Window
             "2023-11-03", "2024-03-11"
         };
 
-        List<string> additionalDateStrings = new List<string>
+        var additionalDateStrings = new string[]
         {
             "2004-08-15", "2005-07-12", "2005-09-19", "2006-02-10", "2006-03-07",
             "2006-05-14", "2007-01-31", "2007-04-25", "2007-06-17", "2008-02-11",
@@ -171,9 +171,6 @@ public partial class MainWindow : Window
             "2024-03-07", "2024-05-06", "2024-06-11", "2024-07-21", "2024-08-10",
             "2024-09-04", "2024-10-02", "2024-11-13", "2024-12-03"
         };
-
-
-
 
         foreach (string date in additionalDateStrings)
         {
