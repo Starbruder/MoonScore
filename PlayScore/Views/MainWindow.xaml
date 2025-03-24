@@ -33,9 +33,7 @@
 
             <Button Content="Get Games" Width="150" Height="30" Margin="10,5,10,0" Click="GetGamesAsync"/>
 
-            <Button Content="Add All Games" Width="150" Height="30" Margin="10,5,10,0" Click="AddAllGamesToDatabase"/>
-
-            <Label Margin="500, 5, 300, 0" Height="30" Foreground="White">
+			<Label Margin="500, 5, 300, 0" Height="30" Foreground="White">
 				Liste der Spiele
 			</Label>
             <Grid>
