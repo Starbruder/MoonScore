@@ -39,11 +39,15 @@
 				Liste der Spiele
 			</Label>
             <Grid>
-                <ListBox x:Name="GamesListBox"
+				<ListBox x:Name="GamesListBox"
                          Width="300"
                  HorizontalAlignment="Center" 
                  VerticalAlignment="Stretch" 
-                 DisplayMemberPath="Name" />
+                 DisplayMemberPath="Name">
+					<ListBox.Foreground>
+						White
+					</ListBox.Foreground>
+				</ListBox>
             </Grid>
             <Button Content="Save Games to Database" Width="250" Height="30" Margin="10,5,10,10" Click="SaveGamesToDatabaseAsync"/>
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5, 5, 5, 5">
