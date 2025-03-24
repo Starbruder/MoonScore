@@ -113,13 +113,11 @@ public partial class MainWindow : Window
 
     private void Barchart_Click(object sender, RoutedEventArgs e)
     {
-        var barChartDataWindow = new BarChartDataWindow(_databaseManager);
-        barChartDataWindow.Show();
+        new BarChartDataWindow(_databaseManager).Show();
     }
 
     private void Piechart_Click(object sender, RoutedEventArgs e)
     {
-        var pieChartDataWindow = new PieChartDataWindow(_databaseManager);
-        pieChartDataWindow.Show();
+        new PieChartDataWindow(_databaseManager).Show();
     }
 }

@@ -13,9 +13,7 @@ public sealed class MoonphaseService : IService
     private readonly string ApiUrl;
 
     public MoonphaseService()
-    {
-        ApiUrl = $"https://api.ipgeolocation.io/astronomy?apiKey={apiKey}&date=";
-    }
+        => ApiUrl = $"https://api.ipgeolocation.io/astronomy?apiKey={apiKey}&date=";
 
     public async Task<MoonPhaseModel?> GetMoonPhaseAsync(string date, double latitude, double longitude)
     {
@@ -27,12 +25,11 @@ public sealed class MoonphaseService : IService
             // Request URL bauen
             string requestUrl = $"{ApiUrl}{date}&lat={latitudeStr}&long={longitudeStr}";
 
-            // Send GET request
-            HttpResponseMessage response = await _httpClient.GetAsync(requestUrl);
-            response.EnsureSuccessStatusCode();
+            var httpResponseMessage = await _httpClient.GetAsync(requestUrl);
+            httpResponseMessage.EnsureSuccessStatusCode();
 
             // Response als string
-            string content = await response.Content.ReadAsStringAsync();
+            string content = await httpResponseMessage.Content.ReadAsStringAsync();
 
             // Deserialize JSON to C# Object
             var moonphaseData = JsonConvert.DeserializeObject<MoonPhaseModel>(content);
