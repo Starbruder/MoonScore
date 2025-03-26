@@ -1,27 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
-namespace MoonScore.Views
+namespace MoonScore.Views;
+
+/// <summary>
+/// Interaktionslogik für MoonPhasesOverviewWindow.xaml
+/// </summary>
+public sealed partial class MoonPhasesOverviewWindow : Window
 {
-    /// <summary>
-    /// Interaktionslogik für MoonPhasesOverviewWindow.xaml
-    /// </summary>
-    public partial class MoonPhasesOverviewWindow : Window
-    {
-        public MoonPhasesOverviewWindow()
-        {
-            InitializeComponent();
-        }
-    }
+    public MoonPhasesOverviewWindow() => InitializeComponent();
 }
