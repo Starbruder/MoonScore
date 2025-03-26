@@ -131,6 +131,6 @@ public partial class MainWindow : Window
 
     private void ShowMoonPhases_Click(object sender, RoutedEventArgs e)
     {
-
+        new MoonPhasesOverviewWindow().Show();
     }
 }
