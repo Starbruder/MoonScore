@@ -55,12 +55,6 @@ public partial class MainWindow : Window
 
             MoonPhaseTextBlock.Text = $"Mondphase: {_moonPhaseTranslator.GetMoonPhaseData(moonPhaseData.MoonPhase)}";
 
-            // Getting Moon-Image
-            //const string imagePath = "pack://application:,,,/Assets/Images/phases/";
-            //var imageService = new MoonphaseImageService(imagePath, ".png");
-            //var image = imageService.GetMoonPhaseImage(/*moonPhaseData.MoonPhase*/"");
-            //moonImage.Source = image;
-
             var imageUri = new Uri("pack://application:,,,/Assets/Images/phases/8_FullMoon.png", UriKind.Absolute);
             moonImage.Source = new BitmapImage(imageUri);
         }

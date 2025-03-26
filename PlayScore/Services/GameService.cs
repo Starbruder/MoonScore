@@ -26,17 +26,13 @@ public sealed class GameService : IService
     {
         try
         {
-            // Build the URL with the date filter, first date is start, second is end
             string url = $"{ApiUrl}{releaseDate},{releaseDate}";
 
-            // Send a GET request
             var responseMessage = await _httpClient.GetAsync(url);
             responseMessage.EnsureSuccessStatusCode();
 
-            // Read the response content
             string content = await responseMessage.Content.ReadAsStringAsync();
 
-            // Deserialize the JSON into a list of games
             var jsonResponse = JsonConvert.DeserializeObject<dynamic>(content);
             var games = new List<GameModel>();
 

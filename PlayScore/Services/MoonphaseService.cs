@@ -19,19 +19,16 @@ public sealed class MoonphaseService : IService
     {
         try
         {
-            string latitudeStr = latitude.ToString(CultureInfo.InvariantCulture);  // Period as decimal separator
+            string latitudeStr = latitude.ToString(CultureInfo.InvariantCulture);  
             string longitudeStr = longitude.ToString(CultureInfo.InvariantCulture);
 
-            // Request URL bauen
             string requestUrl = $"{ApiUrl}{date}&lat={latitudeStr}&long={longitudeStr}";
 
             var httpResponseMessage = await _httpClient.GetAsync(requestUrl);
             httpResponseMessage.EnsureSuccessStatusCode();
 
-            // Response als string
             string content = await httpResponseMessage.Content.ReadAsStringAsync();
 
-            // Deserialize JSON to C# Object
             var moonphaseData = JsonConvert.DeserializeObject<MoonPhaseModel>(content);
             return moonphaseData;
         }

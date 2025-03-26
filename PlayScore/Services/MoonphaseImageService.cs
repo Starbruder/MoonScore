@@ -19,9 +19,6 @@ public sealed class MoonphaseImageService(string imagePath, string fileType) : I
 
     public Uri GetMoonPhaseImageUri(string moonPhaseImageName)
     {
-        //var image = _moonPhaseImages.TryGetValue(moonPhaseImageName, out var moonPhaseImage)
-        //    ? moonPhaseImage
-        //    : "NOT_FOUND"; // Return the "NotFound"-Image if no translation is found.
 
         var image = "8_FullMoon";
 
