@@ -6,4 +6,8 @@
         xmlns:local="clr-namespace:MoonScore.Views"
         mc:Ignorable="d"
         Title="MoonPhasesOverviewWindow" Height="500" Width="800" ResizeMode="CanMinimize">
+
+	<Window.Background>
+		<ImageBrush ImageSource="pack://application:,,,/Assets/Images/phases/mondphasenDerNordhalbkugel.png" Stretch="UniformToFill"/>
+	</Window.Background>
 </Window>
