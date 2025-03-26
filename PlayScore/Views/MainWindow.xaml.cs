@@ -34,6 +34,8 @@ public partial class MainWindow : Window
         _moonphaseService = moonphaseService;
         _moonPhaseTranslator = moonphaseTranslationService;
         _gameService = gameService;
+
+        DateTextBox.Text = InitData.GetGamesInitDate();
     }
 
     private async void GetMoonphase(object sender, RoutedEventArgs e)
