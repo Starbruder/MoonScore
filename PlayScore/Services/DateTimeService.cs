@@ -20,7 +20,6 @@ public sealed class DateTimeService : IService
 
     public static string GetFormattedCurrentDate()
     {
-        // Use stack-allocated memory for the result string.
         Span<char> result = stackalloc char[10];
 
         // Format the year as 4 digits
@@ -42,21 +41,20 @@ public sealed class DateTimeService : IService
         FormatDayOrMonth(CurrentDate.Day, dayBuffer);
         dayBuffer.CopyTo(result.Slice(8, 2));
 
-        // Return the formatted result as a string
         return new string(result);
     }
 
 
     //private static string GetFormattedDayOrMonth(int dateNumber)
     //{
-    //    var dateNumberString = dateNumber.ToString();
-    //    return dateNumberString.Length < 2
-    //        ? "0" + dateNumberString
-    //        : dateNumberString;
+    //    return dateNumber < 10
+    //      ? $"0{dateNumber}"
+    //      : dateNumber.ToString();
     //}
 
     //public static string GetFormattedCurrentDate()
     //{
+    //    // Format the date as "YYYY-MM-DD"
     //    var day = GetFormattedDayOrMonth(CurrentDate.Day);
     //    var month = GetFormattedDayOrMonth(CurrentDate.Month);
 
