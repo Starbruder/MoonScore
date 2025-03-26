@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MoonScore.Views"
         mc:Ignorable="d"
-        Title="MoonPhasesOverviewWindow" Height="500" Width="800" ResizeMode="CanMinimize">
+        Title="MoonScore Moon Phases Overview" Height="500" Width="800" ResizeMode="CanMinimize">
 
 	<Window.Background>
 		<ImageBrush ImageSource="pack://application:,,,/Assets/Images/phases/mondphasenDerNordhalbkugel.png" Stretch="UniformToFill"/>
