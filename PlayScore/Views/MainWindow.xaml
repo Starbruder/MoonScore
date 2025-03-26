@@ -19,8 +19,9 @@
             <Label HorizontalContentAlignment="Center" Margin="250, 5, 250, 0" Height="30" Foreground="White">
 				Datum input Format: YYYY-MM-DD
 			</Label>
-			<TextBox Name="DateTextBox" Width="200" Height="30" Margin="10" Foreground="White"/>
-            <Button Content="Get Moon Phase" Width="150" Height="30" Margin="10,5,10,0" Click="GetMoonphase"/>
+			<DatePicker Name="DateTextBox" Width="200" Height="30" Margin="10"/>
+
+			<Button Content="Get Moon Phase" Width="150" Height="30" Margin="10,5,10,0" Click="GetMoonphase"/>
 
             <Image x:Name="moonImage"
 				   HorizontalAlignment="Left"
