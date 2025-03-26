@@ -120,12 +120,12 @@ public partial class MainWindow : Window
 
     private void Barchart_Click(object sender, RoutedEventArgs e)
     {
-        _serviceProvider.GetRequiredService<BarChartDataWindow>().Show();
+        new BarChartDataWindow(_databaseManager).Show();
     }
 
     private void Piechart_Click(object sender, RoutedEventArgs e)
     {
-        _serviceProvider.GetRequiredService<PieChartDataWindow>().Show();
+        new PieChartDataWindow(_databaseManager).Show();
     }
 
     private void OpenAPIScreen(object sender, RoutedEventArgs e)
