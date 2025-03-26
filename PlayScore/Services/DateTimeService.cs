@@ -6,35 +6,38 @@ public sealed class DateTimeService : IService
 
     private static void FormatDayOrMonth(int dateNumber, Span<char> buffer)
     {
-        // If the number is less than 10, put a leading zero in the buffer.
+        const char charToAppend = '0';
+
+        // If the number is less than 10, put a leading zero in the buffer (charToAppend).
         if (dateNumber < 10)
         {
-            buffer[0] = '0';
-            buffer[1] = (char)('0' + dateNumber);
+            buffer[0] = charToAppend;
+            buffer[1] = (char)(charToAppend + dateNumber);
             return;
         }
 
-        buffer[0] = (char)('0' + (dateNumber / 10));
-        buffer[1] = (char)('0' + (dateNumber % 10));
+        buffer[0] = (char)(charToAppend + (dateNumber / 10));
+        buffer[1] = (char)(charToAppend + (dateNumber % 10));
     }
 
     public static string GetFormattedCurrentDate()
     {
         Span<char> result = stackalloc char[10];
+        const char seperatorChar = '-';
 
         // Format the year as 4 digits
         CurrentDate.Year.TryFormat(result[..4], out int _);
 
-        // Insert the dash between year and month
-        result[4] = '-';
+        // Insert the dash between year and month (seperatorChar).
+        result[4] = seperatorChar;
 
         // Format the month into 2 digits
         Span<char> monthBuffer = stackalloc char[2];
         FormatDayOrMonth(CurrentDate.Month, monthBuffer);
         monthBuffer.CopyTo(result.Slice(5, 2));
 
-        // Insert the dash between month and day
-        result[7] = '-';
+        // Insert the dash between month and day (seperatorChar).
+        result[7] = seperatorChar;
 
         // Format the day into 2 digits
         Span<char> dayBuffer = stackalloc char[2];
