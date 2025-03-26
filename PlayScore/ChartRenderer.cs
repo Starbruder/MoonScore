@@ -74,7 +74,7 @@ public static class ChartRenderer
     {
         var plotModel = new PlotModel
         {
-            Title = ChartTitle,
+            Title = "Amount of Games vs. Moon Phases",
             TextColor = OxyColor.FromRgb(r: 245, g: 245, b: 245),
             TitleFontSize = 20,
             TitlePadding = 10,
@@ -108,9 +108,9 @@ public static class ChartRenderer
         var pieSeries = new PieSeries
         {
             StrokeThickness = 1,
-            InsideLabelPosition = 0.85,
+            InsideLabelPosition = 0.7,
             Slices = pieSlices,
-            InsideLabelFormat = "{0}: {1}",
+            InsideLabelFormat = "{1}",
             StartAngle = 251,
             InsideLabelColor = OxyColors.Black,
         };
