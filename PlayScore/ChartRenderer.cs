@@ -109,7 +109,6 @@ public static class ChartRenderer
         {
             StrokeThickness = 1,
             InsideLabelPosition = 0.85,
-            AngleSpan = 330,
             Slices = pieSlices,
             InsideLabelFormat = "{0}: {1}",
             StartAngle = 251,
