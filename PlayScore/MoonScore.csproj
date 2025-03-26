@@ -14,6 +14,7 @@
     <None Remove="Assets\Images\Backgrounds\background_2.jpeg" />
     <None Remove="Assets\Images\Backgrounds\background_3.jpeg" />
     <None Remove="Assets\Images\phases\8_FullMoon.png" />
+    <None Remove="Assets\Images\phases\mondphasenDerNordhalbkugel.png" />
     <None Remove="Views\moonscore_IconLogo.png" />
   </ItemGroup>
 
@@ -41,6 +42,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Images\phases\8_FullMoon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\phases\mondphasenDerNordhalbkugel.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Views\moonscore_IconLogo.png" />
