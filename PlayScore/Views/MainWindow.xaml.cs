@@ -5,6 +5,8 @@ using System.Windows;
 using System.Windows.Media.Imaging;
 using MoonScore.DataConstants;
 using MoonScore.Views;
+using Microsoft.Extensions.DependencyInjection;
+using MaterialDesignThemes.Wpf;
 
 namespace MoonScore;
 
@@ -13,6 +15,7 @@ namespace MoonScore;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private readonly IServiceProvider _serviceProvider;
     private readonly DatabaseManager _databaseManager;
     private readonly MoonphaseService _moonphaseService;
     private readonly MoonphaseTranslationService _moonPhaseTranslator;
@@ -21,6 +24,7 @@ public partial class MainWindow : Window
     public ObservableCollection<GameModel> Games { get; } = [];
 
     public MainWindow(
+        IServiceProvider serviceProvider,
         DatabaseManager databaseManager,
         MoonphaseService moonphaseService,
         MoonphaseTranslationService moonphaseTranslationService,
@@ -30,10 +34,13 @@ public partial class MainWindow : Window
 
         WindowState = WindowState.Normal;
 
+        _serviceProvider = serviceProvider;
         _databaseManager = databaseManager;
         _moonphaseService = moonphaseService;
         _moonPhaseTranslator = moonphaseTranslationService;
         _gameService = gameService;
+
+        DateTextBox.Text = InitData.GetGamesInitDate();
     }
 
     private async void GetMoonphase(object sender, RoutedEventArgs e)
@@ -113,11 +120,17 @@ public partial class MainWindow : Window
 
     private void Barchart_Click(object sender, RoutedEventArgs e)
     {
-        new BarChartDataWindow(_databaseManager).Show();
+        _serviceProvider.GetRequiredService<BarChartDataWindow>().Show();
     }
 
     private void Piechart_Click(object sender, RoutedEventArgs e)
     {
-        new PieChartDataWindow(_databaseManager).Show();
+        _serviceProvider.GetRequiredService<PieChartDataWindow>().Show();
+    }
+
+    private void OpenAPIScreen(object sender, RoutedEventArgs e)
+    {
+        //var apiScreen = _serviceProvider.GetRequiredService<APIScreen>();
+        //apiScreen.Show();
     }
 }

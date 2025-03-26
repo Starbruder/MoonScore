@@ -50,7 +50,8 @@
             <Button Content="Save Games to Database" Width="250" Height="30" Margin="10,5,10,10" Click="SaveGamesToDatabaseAsync"/>
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5, 5, 5, 5">
 				<Button Content="Bar Chart" Width="150" Height="50" Margin="2, 2, 2, 2" Click="Barchart_Click"/>
-				<Button Content="Pie Chart" Width="150" Height="50" Margin="2, 2, 2, 2" Click="Piechart_Click" />
+				<Button Content="Pie Chart" Width="150" Height="50" Margin="2, 2, 2, 2" Click="Piechart_Click"/>
+				<Button Content="DB Screen" Width="150" Height="50" Margin="2, 2, 2, 2" Click="OpenAPIScreen"/>
 			</StackPanel>
         </StackPanel>
     </ScrollViewer>
