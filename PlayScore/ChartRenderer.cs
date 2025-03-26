@@ -108,7 +108,7 @@ public static class ChartRenderer
         var pieSeries = new PieSeries
         {
             StrokeThickness = 1,
-            InsideLabelPosition = 0.7,
+            InsideLabelPosition = 0.77,
             Slices = pieSlices,
             InsideLabelFormat = "{1}",
             StartAngle = 251,
