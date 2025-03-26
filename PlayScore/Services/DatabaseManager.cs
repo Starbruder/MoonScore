@@ -30,6 +30,8 @@ public sealed class DatabaseManager(SQLiteConnection connection) : IService
             await connection.OpenAsync();
         }
 
+        string formattedReleaseDate = game.Released.ToString("yyyy-MM-dd");
+
         var sql = @"
         INSERT INTO Spiele (ID, Name, ReleaseDate, Rating, MondphaseID)
         VALUES (@ID, @Name, @ReleaseDate, @Rating, @MondphaseID);";
@@ -38,7 +40,7 @@ public sealed class DatabaseManager(SQLiteConnection connection) : IService
         command.Parameters.AddWithValue("@ID", game.Id);
         command.Parameters.AddWithValue("@Name", game.Name);
         command.Parameters.AddWithValue("@Rating", game.Rating);
-        command.Parameters.AddWithValue("@ReleaseDate", game.Released);
+        command.Parameters.AddWithValue("@ReleaseDate", formattedReleaseDate);
         command.Parameters.AddWithValue("@MondphaseID", game.MondphaseID);
 
         await command.ExecuteNonQueryAsync();

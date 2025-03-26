@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Media.Imaging;
 using MoonScore.DataConstants;
 using MoonScore.Views;
+using System.Globalization;
 
 namespace MoonScore;
 
@@ -72,11 +73,15 @@ public partial class MainWindow : Window
     private async void GetGamesAsync(object sender, RoutedEventArgs e)
     {
         string date = DateTextBox.Text;
+
+        DateTime parsedDate = DateTime.ParseExact(date, "dd.MM.yyyy", CultureInfo.InvariantCulture);
+        string formattedDate = parsedDate.ToString("yyyy-MM-dd");
+
         GamesListBox.ItemsSource = Games;
 
         try
         {
-            var gameData = await _gameService.GetGamesByReleaseDateAsync(date);
+            var gameData = await _gameService.GetGamesByReleaseDateAsync(formattedDate);
 
             if (gameData is null || gameData.Count == 0)
             {
