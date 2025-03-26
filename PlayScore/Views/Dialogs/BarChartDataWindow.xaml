@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MoonScore.Views" xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"
-        Title="MoonScore Bar Chart" Height="500" Width="750" ResizeMode="CanMinimize">
+        Title="MoonScore Bar Chart" Height="570" Width="750" ResizeMode="CanMinimize">
 
 	<Window.Background>
 		<ImageBrush ImageSource="pack://application:,,,/Assets/Images/Backgrounds\background_2.jpeg" Stretch="UniformToFill"/>
 	</Window.Background>
 
 	<Grid>
-		<oxy:PlotView x:Name="MoonPhasePlot" Height="400" Width="700">
+		<oxy:PlotView x:Name="MoonPhasePlot" Height="500" Width="700">
 			<!--<oxy:PlotView.Background>
 			Transparent
 			</oxy:PlotView.Background>-->

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MoonScore.Views" xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"
-        Title="MoonScore Pie Chart" Height="500" Width="800" ResizeMode="CanMinimize">
+        Title="MoonScore Pie Chart" Height="570" Width="800" ResizeMode="CanMinimize">
 
 	<Window.Background>
 		<ImageBrush ImageSource="pack://application:,,,/Assets/Images/Backgrounds\background_2.jpeg" Stretch="UniformToFill"/>
@@ -19,7 +19,7 @@
 			<!-- Row for the rest of the content (fill remaining space) -->
 		</Grid.RowDefinitions>
 
-		<oxy:PlotView x:Name="MoonPhasePlot" Height="350" Width="500">
+		<oxy:PlotView x:Name="MoonPhasePlot" Height="500" Width="700">
 			<oxy:PlotView.Background>
 				Transparent
 			</oxy:PlotView.Background>
