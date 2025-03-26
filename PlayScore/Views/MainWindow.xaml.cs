@@ -133,4 +133,9 @@ public partial class MainWindow : Window
         //var apiScreen = _serviceProvider.GetRequiredService<APIScreen>();
         //apiScreen.Show();
     }
+
+    private void ShowMoonPhases_Click(object sender, RoutedEventArgs e)
+    {
+
+    }
 }
