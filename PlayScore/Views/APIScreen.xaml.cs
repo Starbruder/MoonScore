@@ -38,6 +38,11 @@ public sealed partial class APIScreen : Window
 
         DateTextBox.Text = InitData.GetGamesInitDate();
     }
+    protected override void OnClosed(EventArgs e)
+    {
+        base.OnClosed(e);
+        Application.Current.Shutdown(); // Ensures the app fully exits
+    }
 
     private void OpenMainWindow(object sender, RoutedEventArgs e)
     {

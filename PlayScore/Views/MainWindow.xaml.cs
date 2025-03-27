@@ -23,6 +23,12 @@ public partial class MainWindow : Window
         _databaseManager = databaseManager;
     }
 
+    protected override void OnClosed(EventArgs e)
+    {
+        base.OnClosed(e);
+        Application.Current.Shutdown(); // Ensures the app fully exits
+    }
+
     private void Barchart_Click(object sender, RoutedEventArgs e)
     {
         new BarChartDataWindow(_databaseManager).Show();
