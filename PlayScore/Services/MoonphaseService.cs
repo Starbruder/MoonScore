@@ -47,20 +47,16 @@ public sealed class MoonphaseService : IService
     {
         try
         {
-            // Check if the cached moon phase is for the currentDate (today).
             if (_cachedMoonPhaseDate == DateTimeService.CurrentDate)
             {
                 return _cachedMoonPhase;
             }
 
-            // If not cached for today, fetch from the API
             var moonPhase = await GetMoonPhaseAsync(date, RostockData.latitude, RostockData.longitude);
 
             if (moonPhase is not null)
             {
-                // Cache the result and update the cached date
-                _cachedMoonPhase = moonPhase;
-                _cachedMoonPhaseDate = DateTimeService.CurrentDate;
+                CacheMoonPhaseAndUpdateCachedDate(moonPhase);
             }
 
             return moonPhase;
@@ -70,5 +66,11 @@ public sealed class MoonphaseService : IService
             Console.WriteLine($"Error: {ex.Message}");
             return null;
         }
+    }
+
+    private void CacheMoonPhaseAndUpdateCachedDate(MoonPhaseModel moonPhase)
+    {
+        _cachedMoonPhase = moonPhase;
+        _cachedMoonPhaseDate = DateTimeService.CurrentDate;
     }
 }
