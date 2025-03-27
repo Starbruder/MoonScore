@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MoonScore.Services;
+using MoonScore.Views;
 using System.Configuration;
 using System.Data.SQLite;
 using System.Windows;
@@ -46,5 +47,6 @@ public partial class App : Application
         // Register Windows/Screens
         services.AddSingleton<StartScreen>();
         services.AddSingleton<MainWindow>();
+        services.AddSingleton<APIScreen>();
     }
 }
