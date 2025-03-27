@@ -44,11 +44,11 @@ public partial class MainWindow : Window
 
     private async void GetMoonphase(object sender, RoutedEventArgs e)
     {
-        string date = _dateTimeService.FormatDateInput(DateTextBox.Text);
+        string formattedDate = DateTimeService.FormatDateInput(DateTextBox.Text);
 
         try
         {
-            var moonPhaseData = await _moonphaseService.GetMoonPhaseAsync(date, RostockData.latitude, RostockData.longitude);
+            var moonPhaseData = await _moonphaseService.GetMoonPhaseAsync(formattedDate, RostockData.latitude, RostockData.longitude);
 
             if (moonPhaseData is null)
             {
@@ -69,13 +69,13 @@ public partial class MainWindow : Window
 
     private async void GetGamesAsync(object sender, RoutedEventArgs e)
     {
-        string date = _dateTimeService.FormatDateInput(DateTextBox.Text);
+        string formattedDate = DateTimeService.FormatDateInput(DateTextBox.Text);
 
         GamesListBox.ItemsSource = Games;
 
         try
         {
-            var gameData = await _gameService.GetGamesByReleaseDateAsync(date);
+            var gameData = await _gameService.GetGamesByReleaseDateAsync(formattedDate);
 
             if (gameData is null || gameData.Count == 0)
             {

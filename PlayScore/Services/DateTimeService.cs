@@ -49,11 +49,10 @@ public sealed class DateTimeService : IService
         return new string(result);
     }
 
-    public string FormatDateInput(string date)
+    public static string FormatDateInput(string date)
     {
-        DateTime parsedDate = DateTime.ParseExact(date, "dd.MM.yyyy", CultureInfo.InvariantCulture);
-        string formattedDate = parsedDate.ToString("yyyy-MM-dd");
-        return formattedDate;
+        var parsedDate = DateTime.ParseExact(date, "dd.MM.yyyy", CultureInfo.InvariantCulture);
+        return parsedDate.ToString("yyyy-MM-dd");
     }
 
 
