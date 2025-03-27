@@ -13,6 +13,7 @@ public sealed class MoonphaseService : IService
     private readonly string apiKey = ConfigurationManager.AppSettings["API_KEY_MOON"] ?? string.Empty;
     private readonly string ApiUrl;
 
+    // Used for caching MoonPhase for current MoonPhase (today).
     private MoonPhaseModel? _cachedMoonPhase;
     private DateOnly _cachedMoonPhaseDate = DateOnly.MinValue;
 
