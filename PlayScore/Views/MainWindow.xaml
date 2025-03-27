@@ -19,7 +19,7 @@
             <DatePicker Name="DateTextBox" Width="200" Height="30" Margin="10"/>
 
             <Button Content="Get Moon Phase" Width="150" Height="30" Margin="10,5,10,0" Click="GetMoonphase"/>
-            <Image x:Name="moonImage"
+                <Image x:Name="moonImage"
                    Width="100" Height="100"
 				   Margin="5,0,0,0"
                    HorizontalAlignment="Center"
@@ -34,23 +34,19 @@
 					TextAlignment="Center"
                     HorizontalAlignment="Center"
 					Foreground="White"/>
-
             <Button Content="Get Games" Width="150" Height="30" Margin="10,5,10,0" Click="GetGamesAsync"/>
 
 			<Label Margin="500, 5, 300, 0" Height="30" Foreground="White">
-				Liste der Spiele
+				List of Games
 			</Label>
-            <Grid>
+			<Grid>
 				<ListBox x:Name="GamesListBox"
                     Width="300"
                     HorizontalAlignment="Center" 
                     VerticalAlignment="Stretch" 
-                    DisplayMemberPath="Name">
-					<ListBox.Foreground>
-						White
-					</ListBox.Foreground>
-				</ListBox>
-            </Grid>
+                    DisplayMemberPath="Name"
+					Foreground="White"/>
+			</Grid>
             <Button Content="Save Games to Database" Width="250" Height="30" Margin="10,5,10,10" Click="SaveGamesToDatabaseAsync"/>
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5, 5, 5, 5">
 				<Button Content="Bar Chart" Width="150" Height="50" Margin="2, 2, 2, 2" Click="Barchart_Click"/>
