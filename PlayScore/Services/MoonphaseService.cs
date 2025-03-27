@@ -3,6 +3,7 @@ using MoonScore.Models;
 using System.Configuration;
 using System.Globalization;
 using System.Net.Http;
+using MoonScore.DataConstants;
 
 namespace MoonScore.Services;
 
@@ -11,6 +12,9 @@ public sealed class MoonphaseService : IService
     private static readonly HttpClient _httpClient = new();
     private readonly string apiKey = ConfigurationManager.AppSettings["API_KEY_MOON"] ?? string.Empty;
     private readonly string ApiUrl;
+
+    private MoonPhaseModel? _cachedMoonPhase;
+    private DateOnly _cachedMoonPhaseDate = DateOnly.MinValue;
 
     public MoonphaseService()
         => ApiUrl = $"https://api.ipgeolocation.io/astronomy?apiKey={apiKey}&date=";
@@ -31,6 +35,35 @@ public sealed class MoonphaseService : IService
 
             var moonphaseData = JsonConvert.DeserializeObject<MoonPhaseModel>(content);
             return moonphaseData;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+            return null;
+        }
+    }
+
+    public async Task<MoonPhaseModel?> GetCachedRostockMoonPhaseTodayAsync(string date)
+    {
+        try
+        {
+            // Check if the cached moon phase is for the currentDate (today).
+            if (_cachedMoonPhaseDate == DateTimeService.CurrentDate)
+            {
+                return _cachedMoonPhase;
+            }
+
+            // If not cached for today, fetch from the API
+            var moonPhase = await GetMoonPhaseAsync(date, RostockData.latitude, RostockData.longitude);
+
+            if (moonPhase is not null)
+            {
+                // Cache the result and update the cached date
+                _cachedMoonPhase = moonPhase;
+                _cachedMoonPhaseDate = DateTimeService.CurrentDate;
+            }
+
+            return moonPhase;
         }
         catch (Exception ex)
         {
