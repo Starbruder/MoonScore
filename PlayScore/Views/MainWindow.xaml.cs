@@ -18,6 +18,7 @@ public partial class MainWindow : Window
     private readonly MoonphaseService _moonphaseService;
     private readonly MoonphaseTranslationService _moonPhaseTranslator;
     private readonly GameService _gameService;
+    private readonly DateTimeService _dateTimeService;
 
     public ObservableCollection<GameModel> Games { get; } = [];
 
@@ -25,7 +26,8 @@ public partial class MainWindow : Window
         DatabaseManager databaseManager,
         MoonphaseService moonphaseService,
         MoonphaseTranslationService moonphaseTranslationService,
-        GameService gameService)
+        GameService gameService,
+        DateTimeService dateTimeService)
     {
         InitializeComponent();
 
@@ -35,13 +37,14 @@ public partial class MainWindow : Window
         _moonphaseService = moonphaseService;
         _moonPhaseTranslator = moonphaseTranslationService;
         _gameService = gameService;
+        _dateTimeService = dateTimeService;
 
         DateTextBox.Text = InitData.GetGamesInitDate();
     }
 
     private async void GetMoonphase(object sender, RoutedEventArgs e)
     {
-        string date = DateTextBox.Text;
+        string date = _dateTimeService.FormatDateInput(DateTextBox.Text);
 
         try
         {
@@ -66,16 +69,13 @@ public partial class MainWindow : Window
 
     private async void GetGamesAsync(object sender, RoutedEventArgs e)
     {
-        string date = DateTextBox.Text;
-
-        DateTime parsedDate = DateTime.ParseExact(date, "dd.MM.yyyy", CultureInfo.InvariantCulture);
-        string formattedDate = parsedDate.ToString("yyyy-MM-dd");
+        string date = _dateTimeService.FormatDateInput(DateTextBox.Text);
 
         GamesListBox.ItemsSource = Games;
 
         try
         {
-            var gameData = await _gameService.GetGamesByReleaseDateAsync(formattedDate);
+            var gameData = await _gameService.GetGamesByReleaseDateAsync(date);
 
             if (gameData is null || gameData.Count == 0)
             {

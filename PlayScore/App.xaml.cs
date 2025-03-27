@@ -41,6 +41,7 @@ public partial class App : Application
         services.AddSingleton<MoonphaseService>();
         services.AddSingleton<MoonphaseTranslationService>();
         services.AddSingleton<GameService>();
+        services.AddSingleton<DateTimeService>();
 
         // Register Windows/Screens
         services.AddSingleton<StartScreen>();
