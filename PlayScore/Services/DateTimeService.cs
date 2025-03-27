@@ -1,4 +1,6 @@
-﻿namespace MoonScore.Services;
+﻿using System.Globalization;
+
+namespace MoonScore.Services;
 
 public sealed class DateTimeService : IService
 {
@@ -45,6 +47,13 @@ public sealed class DateTimeService : IService
         dayBuffer.CopyTo(result.Slice(8, 2));
 
         return new string(result);
+    }
+
+    public string FormatDateInput(string date)
+    {
+        DateTime parsedDate = DateTime.ParseExact(date, "dd.MM.yyyy", CultureInfo.InvariantCulture);
+        string formattedDate = parsedDate.ToString("yyyy-MM-dd");
+        return formattedDate;
     }
 
 
