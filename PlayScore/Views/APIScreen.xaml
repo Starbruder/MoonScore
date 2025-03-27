@@ -13,7 +13,48 @@
     <Window.Background>
         <ImageBrush ImageSource="pack://application:,,,/Assets/Images/Backgrounds\background_4.png" Stretch="UniformToFill"/>
     </Window.Background>
-    <Grid>
-        <Button Content="Back to MainScreen" Width="200" Height="50" Margin="2, 2, 2, 2" Click="OpenMainWindow"/>
-    </Grid>
+
+	<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+		<StackPanel>
+			<Button Content="Back to MainScreen"
+					Width="200"
+					Height="50"
+					Margin="2, 2, 2, 2"
+					Click="OpenMainWindow"
+					HorizontalAlignment="Left"/>
+			<DatePicker Name="DateTextBox" Width="200" Height="30" Margin="10"/>
+
+			<Button Content="Get Moon Phase" Width="150" Height="30" Margin="10,5,10,0" Click="GetMoonphase"/>
+			<Image x:Name="moonImage"
+				Width="100" Height="100"
+				Margin="5,0,0,0"
+				HorizontalAlignment="Center"
+				VerticalAlignment="Bottom"
+				Grid.Column="1" Grid.Row="1"
+				Stretch="Fill"
+				d:IsLocked="False"/>
+			<TextBlock Name="MoonPhaseTextBlock"
+				Margin="0,5,0,5"
+				Height="30"
+				FontSize="20"
+				TextAlignment="Center"
+				HorizontalAlignment="Center"
+				Foreground="White"/>
+			<Button Content="Get Games" Width="150" Height="30" Margin="10,5,10,0" Click="GetGamesAsync"/>
+
+			<GroupBox Header="List of Games" Width="400" Margin="0,5,0,0">
+				<!--<GroupBox.Header>
+					<ContentPresenter Content="List of Games" HorizontalAlignment="Center" Text/>
+				</GroupBox.Header>-->
+				<ListBox x:Name="GamesListBox"
+					Width="300"
+					HorizontalAlignment="Center" 
+					VerticalAlignment="Stretch" 
+					DisplayMemberPath="Name"
+					Foreground="White"/>
+			</GroupBox>
+			<Button Content="Save Games to Database" Width="250" Height="30" Margin="10,5,10,10" Click="SaveGamesToDatabaseAsync"/>
+		</StackPanel>
+	</ScrollViewer>
+
 </Window>

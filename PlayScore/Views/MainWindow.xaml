@@ -14,46 +14,14 @@
     <Window.Background>
 		<ImageBrush ImageSource="pack://application:,,,/Assets/Images/Backgrounds\background_3.jpeg" Stretch="UniformToFill"/>
     </Window.Background>
+	
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-        <StackPanel>
-            <DatePicker Name="DateTextBox" Width="200" Height="30" Margin="10"/>
-
-            <Button Content="Get Moon Phase" Width="150" Height="30" Margin="10,5,10,0" Click="GetMoonphase"/>
-                <Image x:Name="moonImage"
-                   Width="100" Height="100"
-				   Margin="5,0,0,0"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Bottom"
-                   Grid.Column="1" Grid.Row="1"
-                   Stretch="Fill"
-                   d:IsLocked="False"/>
-            <TextBlock Name="MoonPhaseTextBlock"
-					Margin="0,5,0,5"
-					Height="30"
-					FontSize="20"
-					TextAlignment="Center"
-                    HorizontalAlignment="Center"
-					Foreground="White"/>
-            <Button Content="Get Games" Width="150" Height="30" Margin="10,5,10,0" Click="GetGamesAsync"/>
-
-			<GroupBox Header="List of Games" Width="400" Margin="0,5,0,0">
-				<!--<GroupBox.Header>
-				    <ContentPresenter Content="List of Games" HorizontalAlignment="Center" Text/>
-                </GroupBox.Header>-->
-				<ListBox x:Name="GamesListBox"
-                    Width="300"
-                    HorizontalAlignment="Center" 
-                    VerticalAlignment="Stretch" 
-                    DisplayMemberPath="Name"
-					Foreground="White"/>
-			</GroupBox>
-            <Button Content="Save Games to Database" Width="250" Height="30" Margin="10,5,10,10" Click="SaveGamesToDatabaseAsync"/>
+		<StackPanel>
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5, 5, 5, 5">
 				<Button Content="Bar Chart" Width="150" Height="50" Margin="2, 2, 2, 2" Click="Barchart_Click"/>
 				<Button Content="Pie Chart" Width="150" Height="50" Margin="2, 2, 2, 2" Click="Piechart_Click"/>
 				<Button Content="API Screen" Width="150" Height="50" Margin="2, 2, 2, 2" Click="OpenAPIScreen"/>
 			</StackPanel>
-
 			<Button Content="Show Moonphases" Width="150" Height="50" Margin="10,5,10,0" Click="ShowMoonPhases_Click"/>
 		</StackPanel>
     </ScrollViewer>
