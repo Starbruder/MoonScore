@@ -89,7 +89,7 @@ public partial class MainWindow : Window
 
             if (gameData.Count == 0)
             {
-                MessageBox.Show("Failed to retrieve game data for the requested day. There may not exist any.");
+                MessageBox.Show("Cannot show games for the requested day. There may not exist any game releases on that day.");
                 return;
             }
 
