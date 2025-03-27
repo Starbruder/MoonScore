@@ -52,7 +52,7 @@ public partial class MainWindow : Window
                 return;
             }
 
-            MoonPhaseTextBlock.Text = $"Mondphase: {_moonPhaseTranslator.GetMoonPhaseData(moonPhaseData.MoonPhase).Name}";
+            MoonPhaseTextBlock.Text = _moonPhaseTranslator.GetMoonPhaseData(moonPhaseData.MoonPhase).Name;
 
             var imageUri = new Uri("pack://application:,,,/Assets/Images/phases/8_FullMoon.png", UriKind.Absolute);
             moonImage.Source = new BitmapImage(imageUri);
