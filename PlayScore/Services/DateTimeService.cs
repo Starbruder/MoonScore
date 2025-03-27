@@ -2,7 +2,7 @@
 
 namespace MoonScore.Services;
 
-public sealed class DateTimeService : IService
+public sealed class DateTimeService
 {
     public static readonly DateOnly CurrentDate = DateOnly.FromDateTime(DateTime.Now);
 

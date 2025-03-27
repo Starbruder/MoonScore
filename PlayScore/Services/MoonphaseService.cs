@@ -7,7 +7,7 @@ using MoonScore.DataConstants;
 
 namespace MoonScore.Services;
 
-public sealed class MoonphaseService : IService
+public sealed class MoonphaseService
 {
     private static readonly HttpClient _httpClient = new();
     private readonly string apiKey = ConfigurationManager.AppSettings["API_KEY_MOON"] ?? string.Empty;

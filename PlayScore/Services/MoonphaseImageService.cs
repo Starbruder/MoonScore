@@ -2,7 +2,7 @@
 
 namespace MoonScore.Services;
 
-public sealed class MoonphaseImageService(string imagePath, string fileType) : IService
+public sealed class MoonphaseImageService(string imagePath, string fileType)
 {
     private readonly Dictionary<string, string> _moonPhaseImages = new()
     {

@@ -3,7 +3,7 @@ using System.Data.SQLite;
 
 namespace MoonScore.Services;
 
-public sealed class DatabaseManager(SQLiteConnection connection) : IService
+public sealed class DatabaseManager(SQLiteConnection connection)
 {
     public async Task AddGameToSpieleTableAsync(GameModel game)
     {
