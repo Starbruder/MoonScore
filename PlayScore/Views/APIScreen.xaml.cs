@@ -6,7 +6,7 @@ namespace MoonScore.Views;
 /// <summary>
 /// Interaktionslogik für APIScreen.xaml
 /// </summary>
-public partial class APIScreen : Window
+public sealed partial class APIScreen : Window
 {
     private readonly IServiceProvider _serviceProvider;
 
@@ -19,8 +19,7 @@ public partial class APIScreen : Window
 
     private void OpenMainWindow(object sender, RoutedEventArgs e)
     {
-        var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
-        mainWindow.Show();
+        _serviceProvider.GetRequiredService<MainWindow>().Show();
         this.Hide();
     }
 }
