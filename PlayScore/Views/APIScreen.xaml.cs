@@ -56,7 +56,7 @@ public sealed partial class APIScreen : Window
 
         try
         {
-            var moonPhaseData = await _moonphaseService.GetCachedRostockMoonPhaseTodayAsync(formattedDate);
+            var moonPhaseData = await _moonphaseService.GetMoonPhaseAsync(formattedDate, RostockData.latitude, RostockData.longitude);
 
             if (moonPhaseData is null)
             {

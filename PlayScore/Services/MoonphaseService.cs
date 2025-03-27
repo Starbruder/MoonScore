@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Globalization;
 using System.Net.Http;
 using MoonScore.DataConstants;
+using System.Windows;
 
 namespace MoonScore.Services;
 
@@ -13,27 +14,37 @@ public sealed class MoonphaseService
     private readonly string apiKey = ConfigurationManager.AppSettings["API_KEY_MOON"] ?? string.Empty;
     private readonly string ApiUrl;
 
+    private DateOnly? _cachedDate;
     private MoonPhaseModel? _cachedMoonPhase;
-    private DateOnly _cachedMoonPhaseDate = DateOnly.MinValue;
 
     public MoonphaseService()
         => ApiUrl = $"https://api.ipgeolocation.io/astronomy?apiKey={apiKey}&date=";
 
     public async Task<MoonPhaseModel?> GetMoonPhaseAsync(string date, double latitude, double longitude)
     {
+        if (DateOnly.TryParse(date, out DateOnly parsedDate) && _cachedDate == parsedDate)
+        {
+            MessageBox.Show($"Skipping API call. Data for {date} is already cached.");
+            return _cachedMoonPhase;
+        }
+
         try
         {
-            string latitudeStr = latitude.ToString(CultureInfo.InvariantCulture);  
+            string latitudeStr = latitude.ToString(CultureInfo.InvariantCulture);
             string longitudeStr = longitude.ToString(CultureInfo.InvariantCulture);
 
             string requestUrl = $"{ApiUrl}{date}&lat={latitudeStr}&long={longitudeStr}";
-
             var httpResponseMessage = await _httpClient.GetAsync(requestUrl);
             httpResponseMessage.EnsureSuccessStatusCode();
 
             string content = await httpResponseMessage.Content.ReadAsStringAsync();
-
             var moonphaseData = JsonConvert.DeserializeObject<MoonPhaseModel>(content);
+
+            if (moonphaseData is not null)
+            {
+                CacheMoonPhaseAndUpdateCachedDate(moonphaseData, parsedDate);
+            }
+
             return moonphaseData;
         }
         catch (Exception ex)
@@ -43,34 +54,9 @@ public sealed class MoonphaseService
         }
     }
 
-    public async Task<MoonPhaseModel?> GetCachedRostockMoonPhaseTodayAsync(string date)
-    {
-        try
-        {
-            if (_cachedMoonPhaseDate == date)
-            {
-                return _cachedMoonPhase;
-            }
-
-            var moonPhase = await GetMoonPhaseAsync(date, RostockData.latitude, RostockData.longitude);
-
-            if (moonPhase is not null)
-            {
-                CacheMoonPhaseAndUpdateCachedDate(moonPhase);
-            }
-
-            return moonPhase;
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error: {ex.Message}");
-            return null;
-        }
-    }
-
-    private void CacheMoonPhaseAndUpdateCachedDate(MoonPhaseModel moonPhase)
+    private void CacheMoonPhaseAndUpdateCachedDate(MoonPhaseModel moonPhase, DateOnly date)
     {
         _cachedMoonPhase = moonPhase;
-        _cachedMoonPhaseDate = DateTimeService.CurrentDate;
+        _cachedDate = date;
     }
 }

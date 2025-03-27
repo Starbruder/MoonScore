@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using MoonScore.Models;
 using System.Configuration;
+using System.Globalization;
 using System.Net.Http;
 using MoonScore.DataConstants;
 using System.Windows;
@@ -15,6 +16,9 @@ public sealed class GameService
     private readonly MoonphaseService _moonphaseService;
     private readonly MoonphaseTranslationService _moonphaseTranslationService;
 
+    private DateOnly? _cachedDate;
+    private List<GameModel>? _cachedGames;
+
     public GameService(MoonphaseService moonphaseService, MoonphaseTranslationService moonphaseTranslator)
     {
         ApiUrl = $"https://api.rawg.io/api/games?key={apiKey}&dates=";
@@ -24,15 +28,19 @@ public sealed class GameService
 
     public async Task<List<GameModel>> GetGamesByReleaseDateAsync(string releaseDate)
     {
+        if (DateOnly.TryParse(releaseDate, out DateOnly parsedDate) && _cachedDate == parsedDate)
+        {
+            MessageBox.Show($"Skipping API call. Data for {releaseDate} is already cached.");
+            return _cachedGames ?? [];
+        }
+
         try
         {
             string url = $"{ApiUrl}{releaseDate},{releaseDate}";
-
             var responseMessage = await _httpClient.GetAsync(url);
             responseMessage.EnsureSuccessStatusCode();
 
             string content = await responseMessage.Content.ReadAsStringAsync();
-
             var jsonResponse = JsonConvert.DeserializeObject<dynamic>(content);
             var games = new List<GameModel>();
 
@@ -48,10 +56,9 @@ public sealed class GameService
                 double gameRating = game.rating;
 
                 int? moonPhaseId = null;
-
                 if (gameRating > 0)
                 {
-                    moonPhaseId = await GetGameMoonPhaseIdAsync(gameReleaseDate); 
+                    moonPhaseId = await GetGameMoonPhaseIdAsync(gameReleaseDate);
                 }
 
                 games.Add(new()
@@ -60,10 +67,11 @@ public sealed class GameService
                     Name = game.name,
                     Released = game.released,
                     Rating = game.rating,
-                    MondphaseID = moonPhaseId ?? 0 
+                    MondphaseID = moonPhaseId ?? 0
                 });
             }
 
+            CacheGamesAndUpdateCachedDate(games, parsedDate);
             return games;
         }
         catch (Exception ex)
@@ -76,7 +84,13 @@ public sealed class GameService
     public async Task<int?> GetGameMoonPhaseIdAsync(string date)
     {
         var moonPhaseData = await _moonphaseService.GetMoonPhaseAsync(date, RostockData.latitude, RostockData.longitude);
-        var (moonPhaseId, _) = _moonphaseTranslationService.GetMoonPhaseData(moonPhaseData.MoonPhase);
-        return moonPhaseId; 
+        var (moonPhaseId, _) = _moonphaseTranslationService.GetMoonPhaseData(moonPhaseData?.MoonPhase ?? string.Empty);
+        return moonPhaseId;
+    }
+
+    private void CacheGamesAndUpdateCachedDate(List<GameModel> games, DateOnly date)
+    {
+        _cachedGames = games;
+        _cachedDate = date;
     }
 }
