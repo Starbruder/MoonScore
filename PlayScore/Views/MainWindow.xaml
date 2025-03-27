@@ -41,17 +41,17 @@
 
             <Button Content="Get Games" Width="150" Height="30" Margin="10,5,10,0" Click="GetGamesAsync"/>
 
-			<Label Margin="500, 5, 300, 0" Height="30" Foreground="White">
-				List of Games
-			</Label>
-			<Grid>
+			<GroupBox Header="List of Games" Width="400" Margin="0,5,0,0">
+				<!--<GroupBox.Header>
+				    <ContentPresenter Content="List of Games" HorizontalAlignment="Center" Text/>
+                </GroupBox.Header>-->
 				<ListBox x:Name="GamesListBox"
                     Width="300"
                     HorizontalAlignment="Center" 
                     VerticalAlignment="Stretch" 
                     DisplayMemberPath="Name"
 					Foreground="White"/>
-			</Grid>
+			</GroupBox>
             <Button Content="Save Games to Database" Width="250" Height="30" Margin="10,5,10,10" Click="SaveGamesToDatabaseAsync"/>
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5, 5, 5, 5">
 				<Button Content="Bar Chart" Width="150" Height="50" Margin="2, 2, 2, 2" Click="Barchart_Click"/>
