@@ -13,10 +13,6 @@ public sealed class MoonphaseService : IService
     private readonly string apiKey = ConfigurationManager.AppSettings["API_KEY_MOON"] ?? string.Empty;
     private readonly string ApiUrl;
 
-    // Used for caching MoonPhase for current MoonPhase (today).
-    private MoonPhaseModel? _cachedMoonPhase;
-    private DateOnly _cachedMoonPhaseDate = DateOnly.MinValue;
-
     public MoonphaseService()
         => ApiUrl = $"https://api.ipgeolocation.io/astronomy?apiKey={apiKey}&date=";
 
@@ -42,36 +38,5 @@ public sealed class MoonphaseService : IService
             Console.WriteLine($"Error: {ex.Message}");
             return null;
         }
-    }
-
-    public async Task<MoonPhaseModel?> GetCachedRostockMoonPhaseTodayAsync(string date)
-    {
-        try
-        {
-            if (_cachedMoonPhaseDate == DateTimeService.CurrentDate)
-            {
-                return _cachedMoonPhase;
-            }
-
-            var moonPhase = await GetMoonPhaseAsync(date, RostockData.latitude, RostockData.longitude);
-
-            if (moonPhase is not null)
-            {
-                CacheMoonPhaseAndUpdateCachedDate(moonPhase);
-            }
-
-            return moonPhase;
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error: {ex.Message}");
-            return null;
-        }
-    }
-
-    private void CacheMoonPhaseAndUpdateCachedDate(MoonPhaseModel moonPhase)
-    {
-        _cachedMoonPhase = moonPhase;
-        _cachedMoonPhaseDate = DateTimeService.CurrentDate;
     }
 }
