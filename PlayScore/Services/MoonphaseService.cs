@@ -47,7 +47,7 @@ public sealed class MoonphaseService
     {
         try
         {
-            if (_cachedMoonPhaseDate == DateTimeService.CurrentDate)
+            if (_cachedMoonPhaseDate == date)
             {
                 return _cachedMoonPhase;
             }
