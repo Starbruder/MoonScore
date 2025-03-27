@@ -31,8 +31,6 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
 
-        WindowState = WindowState.Normal;
-
         _serviceProvider = serviceProvider;
         _databaseManager = databaseManager;
         _moonphaseService = moonphaseService;
@@ -132,7 +130,7 @@ public partial class MainWindow : Window
     {
         var apiScreen = _serviceProvider.GetRequiredService<APIScreen>();
         apiScreen.Show();
-        Close();
+        this.Hide();
     }
 
     private void ShowMoonPhases_Click(object sender, RoutedEventArgs e)

@@ -28,8 +28,6 @@ public partial class StartScreen : Window
         InitializeComponent();
 
         _serviceProvider = serviceProvider;
-
-        WindowState = WindowState.Normal;
     }
 
     private void StartProgram_Click(object sender, RoutedEventArgs e)
