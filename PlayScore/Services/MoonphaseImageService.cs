@@ -17,12 +17,16 @@ public sealed class MoonphaseImageService(string imagePath, string fileType) : I
         { "NOT_FOUND", "16_NotFound" }
     };
 
+    private string BuildFilenameString(string image) => (imagePath + image + fileType);
+
     public Uri GetMoonPhaseImageUri(string moonPhaseImageName)
     {
+        if (!_moonPhaseImages.TryGetValue(key: moonPhaseImageName, value: out var image))
+        {
+            image = "16_NotFound";
+        }
 
-        var image = "8_FullMoon";
-
-        var fileName = imagePath + image + fileType;
+        string fileName = BuildFilenameString(image);
         return new(fileName, UriKind.Absolute);
     }
 
