@@ -17,7 +17,6 @@ public partial class MainWindow : Window
     private readonly MoonphaseService _moonphaseService;
     private readonly MoonphaseTranslationService _moonPhaseTranslator;
     private readonly GameService _gameService;
-    private readonly DateTimeService _dateTimeService;
 
     public ObservableCollection<GameModel> Games { get; } = [];
 
@@ -25,8 +24,7 @@ public partial class MainWindow : Window
         DatabaseManager databaseManager,
         MoonphaseService moonphaseService,
         MoonphaseTranslationService moonphaseTranslationService,
-        GameService gameService,
-        DateTimeService dateTimeService)
+        GameService gameService)
     {
         InitializeComponent();
 
@@ -36,7 +34,6 @@ public partial class MainWindow : Window
         _moonphaseService = moonphaseService;
         _moonPhaseTranslator = moonphaseTranslationService;
         _gameService = gameService;
-        _dateTimeService = dateTimeService;
 
         DateTextBox.Text = InitData.GetGamesInitDate();
     }
