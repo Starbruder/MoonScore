@@ -10,7 +10,7 @@ public static class ChartRenderer
 
     public static PlotModel CreateBarchartModel(IEnumerable<KeyValuePair<string, double>> keyValuePairs)
     {
-        var plotModel = new PlotModel { Title = ChartTitle };
+        var plotModel = new PlotModel { Title = "Average " + ChartTitle };
 
         // Define the Y-Axis
         var categoryAxis = new CategoryAxis
