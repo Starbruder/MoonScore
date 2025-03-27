@@ -14,6 +14,6 @@
         <ImageBrush ImageSource="pack://application:,,,/Assets/Images/Backgrounds\background_4.png" Stretch="UniformToFill"/>
     </Window.Background>
     <Grid>
-        
+        <Button Content="Back to MainScreen" Width="200" Height="50" Margin="2, 2, 2, 2" Click="OpenMainWindow"/>
     </Grid>
 </Window>

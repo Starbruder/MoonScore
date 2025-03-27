@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,20 @@ namespace MoonScore.Views
     /// </summary>
     public partial class APIScreen : Window
     {
-        public APIScreen()
+        private readonly IServiceProvider _serviceProvider;
+
+        public APIScreen(IServiceProvider serviceProvider)
         {
             InitializeComponent();
+
+            _serviceProvider = serviceProvider;
+        }
+
+        private void OpenMainWindow(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
+            mainWindow.Show();
+            this.Hide();
         }
     }
 }
