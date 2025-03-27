@@ -62,7 +62,7 @@
 				<Button Content="DB Screen" Width="150" Height="50" Margin="2, 2, 2, 2" Click="OpenAPIScreen"/>
 			</StackPanel>
 
-			<Button Content="Show Moonphases" Width="150" Height="30" Margin="10,5,10,0" Click="ShowMoonPhases_Click"/>
+			<Button Content="Show Moonphases" Width="150" Height="50" Margin="10,5,10,0" Click="ShowMoonPhases_Click"/>
 		</StackPanel>
     </ScrollViewer>
 
