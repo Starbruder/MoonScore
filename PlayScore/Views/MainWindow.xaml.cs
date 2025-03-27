@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Media.Imaging;
 using MoonScore.DataConstants;
 using MoonScore.Views;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MoonScore;
 
@@ -13,6 +14,7 @@ namespace MoonScore;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private readonly IServiceProvider _serviceProvider;
     private readonly DatabaseManager _databaseManager;
     private readonly MoonphaseService _moonphaseService;
     private readonly MoonphaseTranslationService _moonPhaseTranslator;
@@ -21,6 +23,7 @@ public partial class MainWindow : Window
     public ObservableCollection<GameModel> Games { get; } = [];
 
     public MainWindow(
+        IServiceProvider serviceProvider,
         DatabaseManager databaseManager,
         MoonphaseService moonphaseService,
         MoonphaseTranslationService moonphaseTranslationService,
@@ -30,6 +33,7 @@ public partial class MainWindow : Window
 
         WindowState = WindowState.Normal;
 
+        _serviceProvider = serviceProvider;
         _databaseManager = databaseManager;
         _moonphaseService = moonphaseService;
         _moonPhaseTranslator = moonphaseTranslationService;
@@ -126,8 +130,9 @@ public partial class MainWindow : Window
 
     private void OpenAPIScreen(object sender, RoutedEventArgs e)
     {
-        //var apiScreen = _serviceProvider.GetRequiredService<APIScreen>();
-        //apiScreen.Show();
+        var apiScreen = _serviceProvider.GetRequiredService<APIScreen>();
+        apiScreen.Show();
+        Close();
     }
 
     private void ShowMoonPhases_Click(object sender, RoutedEventArgs e)
