@@ -10,9 +10,9 @@
         WindowStartupLocation="CenterScreen"
         Icon="/Views/moonscore_IconLogo.png">
 
-    <Window.Background>
-        <ImageBrush ImageSource="pack://application:,,,/Assets/Images/Backgrounds\background_4.png" Stretch="UniformToFill"/>
-    </Window.Background>
+	<Window.Background>
+		<ImageBrush ImageSource="pack://application:,,,/Assets/Images/Backgrounds\background_4.png" Stretch="UniformToFill"/>
+	</Window.Background>
 
 	<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
 		<StackPanel>
@@ -22,12 +22,12 @@
 					Margin="2, 2, 2, 2"
 					Click="OpenMainWindow"
 					HorizontalAlignment="Left"/>
-			<DatePicker Name="DateTextBox" Width="200" Height="30" Margin="10"/>
 
+			<DatePicker Name="DateTextBox" Width="150" Height="30" Margin="0,100,0,0"/>
 			<Button Content="Get Moon Phase" Width="150" Height="30" Margin="10,5,10,0" Click="GetMoonphase"/>
 			<Image x:Name="moonImage"
-				Width="100" Height="100"
-				Margin="5,0,0,0"
+				Width="150" Height="150"
+				Margin="0,10,0,0"
 				HorizontalAlignment="Center"
 				VerticalAlignment="Bottom"
 				Grid.Column="1" Grid.Row="1"
@@ -40,20 +40,18 @@
 				TextAlignment="Center"
 				HorizontalAlignment="Center"
 				Foreground="White"/>
-			<Button Content="Get Games" Width="150" Height="30" Margin="10,5,10,0" Click="GetGamesAsync"/>
 
-			<GroupBox Header="List of Games" Width="400" Margin="0,5,0,0">
-				<!--<GroupBox.Header>
-					<ContentPresenter Content="List of Games" HorizontalAlignment="Center" Text/>
-				</GroupBox.Header>-->
-				<ListBox x:Name="GamesListBox"
-					Width="300"
-					HorizontalAlignment="Center" 
-					VerticalAlignment="Stretch" 
-					DisplayMemberPath="Name"
-					Foreground="White"/>
-			</GroupBox>
-			<Button Content="Save Games to Database" Width="250" Height="30" Margin="10,5,10,10" Click="SaveGamesToDatabaseAsync"/>
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+				<Button Content="Get Games" Width="250" Margin="10,5,10,0" Click="GetGamesAsync" VerticalAlignment="Top"/>
+				<GroupBox Header="List of Games" Margin="0,5,0,0">
+					<ListBox x:Name="GamesListBox"
+						Width="300"
+						HorizontalAlignment="Center" 
+						DisplayMemberPath="Name"
+						Foreground="White"/>
+				</GroupBox>
+				<Button Content="Save Games to Database" Width="250" Margin="10,5,10,10" Click="SaveGamesToDatabaseAsync" VerticalAlignment="Top"/>
+			</StackPanel>
 		</StackPanel>
 	</ScrollViewer>
 
