@@ -41,7 +41,7 @@ public sealed partial class APIScreen : Window
     protected override void OnClosed(EventArgs e)
     {
         base.OnClosed(e);
-        Application.Current.Shutdown(); // Ensures the app fully exits
+        Application.Current.Shutdown();
     }
 
     private void OpenMainWindow(object sender, RoutedEventArgs e)
@@ -69,7 +69,6 @@ public sealed partial class APIScreen : Window
             var imageUri = new Uri("pack://application:,,,/Assets/Images/phases/8_FullMoon.png", UriKind.Absolute);
             moonImage.Source = new BitmapImage(imageUri);
 
-            // Getting Moon-Image
             const string imagePath = "pack://application:,,,/Assets/Images/phases/";
             var imageService = new MoonphaseImageService(imagePath, ".png");
             var image = imageService.GetMoonPhaseImage(moonPhaseData.MoonPhase);

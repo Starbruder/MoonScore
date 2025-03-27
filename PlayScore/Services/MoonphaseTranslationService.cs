@@ -2,7 +2,7 @@
 
 namespace MoonScore.Services;
 
-public sealed class MoonphaseTranslationService : IService
+public sealed class MoonphaseTranslationService
 {
     private readonly Dictionary<string, (int Id, string GermanName)> _moonPhaseData = new()
     {

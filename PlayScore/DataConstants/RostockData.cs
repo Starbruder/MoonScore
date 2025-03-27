@@ -10,5 +10,5 @@ public static class RostockData
     public const string country = "DE";
     public const string state = "MV";
 
-    public static TimeZoneInfo timeZone = TimeZoneInfo.FindSystemTimeZoneById("UTC+01:00"); // (CET = Central European Time)
+    public static TimeZoneInfo timeZone = TimeZoneInfo.FindSystemTimeZoneById("UTC+01:00");
 }

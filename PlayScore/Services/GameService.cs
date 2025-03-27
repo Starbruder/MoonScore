@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace MoonScore.Services;
 
-public sealed class GameService : IService
+public sealed class GameService
 {
     private readonly HttpClient _httpClient = new();
     private readonly string apiKey = ConfigurationManager.AppSettings["API_KEY_GAMES"] ?? string.Empty;

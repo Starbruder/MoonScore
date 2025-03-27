@@ -3,26 +3,8 @@ using System.Data.SQLite;
 
 namespace MoonScore.Services;
 
-public sealed class DatabaseManager(SQLiteConnection connection) : IService
+public sealed class DatabaseManager(SQLiteConnection connection)
 {
-    public void ConnectToDatabase()
-    {
-        if (connection.State == System.Data.ConnectionState.Open)
-        {
-            return;
-        }
-
-        try
-        {
-            connection.Open();
-            Console.WriteLine("Database connected.");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error: {ex.Message}");
-        }
-    }
-
     public async Task AddGameToSpieleTableAsync(GameModel game)
     {
         if (connection.State != System.Data.ConnectionState.Open)
