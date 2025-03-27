@@ -13,6 +13,7 @@
     <None Remove="Assets\Images\Backgrounds\background.jpeg" />
     <None Remove="Assets\Images\Backgrounds\background_2.jpeg" />
     <None Remove="Assets\Images\Backgrounds\background_3.jpeg" />
+    <None Remove="Assets\Images\Backgrounds\Background_4.png" />
 	  <None Remove="Assets\Images\phases\0_NewMoon.png" />
 	  <None Remove="Assets\Images\phases\14_WaxingCrescent.png" />
 	  <None Remove="Assets\Images\phases\12_FirstQuarter.png" />
@@ -47,6 +48,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Images\Backgrounds\background_3.jpeg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Backgrounds\Background_4.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
 	<Resource Include="Assets\Images\phases\0_NewMoon.png">
