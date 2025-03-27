@@ -4,7 +4,7 @@ using System.Windows;
 namespace MoonScore.Views;
 
 /// <summary>
-/// Interaktionslogik für APIScreen.xaml
+/// Interaction logic for APIScreen.xaml
 /// </summary>
 public sealed partial class APIScreen : Window
 {
