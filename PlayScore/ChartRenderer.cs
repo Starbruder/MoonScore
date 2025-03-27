@@ -12,7 +12,6 @@ public static class ChartRenderer
     {
         var plotModel = new PlotModel { Title = "Average " + ChartTitle };
 
-        // Define the Y-Axis
         var categoryAxis = new CategoryAxis
         {
             Position = AxisPosition.Left,
@@ -23,7 +22,6 @@ public static class ChartRenderer
         categoryAxis.Labels.AddRange(keyValuePairs.Select(pair => pair.Key));
         plotModel.Axes.Add(categoryAxis);
 
-        // Define the X-Axis
         var valueAxis = new LinearAxis
         {
             Position = AxisPosition.Bottom,
@@ -43,18 +41,16 @@ public static class ChartRenderer
             LabelColor = OxyColors.Black
         };
 
-        // Base color ( RGB: 103, 58, 183 )
         byte baseR = 103, baseG = 58, baseB = 183;
 
-        uint index = 0; // Used to modify shades
+        uint index = 0; 
 
         foreach (var pair in keyValuePairs)
         {
-            // Generate a slightly different shade for each slice
             const byte maxValue = byte.MaxValue;
-            byte r = (byte)Math.Min(baseR + index * 10, maxValue);  // Increase Red slightly
-            byte g = (byte)Math.Min(baseG + index * 12, maxValue);  // Increase Green slightly
-            byte b = (byte)Math.Min(baseB + index * 15, maxValue);  // Increase Blue slightly
+            byte r = (byte)Math.Min(baseR + index * 10, maxValue);  
+            byte g = (byte)Math.Min(baseG + index * 12, maxValue);  
+            byte b = (byte)Math.Min(baseB + index * 15, maxValue);  
 
             barSeries.Items.Add(new()
             {
@@ -62,7 +58,7 @@ public static class ChartRenderer
                 Color = OxyColor.FromRgb(r, g, b),
             });
 
-            index++; // Increment index for next slice
+            index++; 
         }
 
         plotModel.Series.Add(barSeries);
@@ -82,18 +78,16 @@ public static class ChartRenderer
 
         var pieSlices = new List<PieSlice>();
 
-        // Base color ( RGB: 103, 58, 183 )
         byte baseR = 103, baseG = 58, baseB = 183;
 
-        uint index = 0; // Used to modify shades
+        uint index = 0; 
 
         foreach (var pair in keyValuePairs)
         {
-            // Generate a slightly different shade for each slice
             const byte maxValue = byte.MaxValue;
-            var r = (byte)Math.Min(baseR + index * 10, maxValue);  // Increase Red slightly
-            var g = (byte)Math.Min(baseG + index * 12, maxValue);  // Increase Green slightly
-            var b = (byte)Math.Min(baseB + index * 15, maxValue);  // Increase Blue slightly
+            var r = (byte)Math.Min(baseR + index * 10, maxValue);  
+            var g = (byte)Math.Min(baseG + index * 12, maxValue);  
+            var b = (byte)Math.Min(baseB + index * 15, maxValue);  
 
             var pieSlice = new PieSlice(pair.Key, pair.Value)
             {
@@ -102,7 +96,7 @@ public static class ChartRenderer
 
             pieSlices.Add(pieSlice);
 
-            index++; // Increment index for next slice
+            index++;
         }
 
         var pieSeries = new PieSeries
@@ -118,40 +112,5 @@ public static class ChartRenderer
         plotModel.Series.Add(pieSeries);
 
         return plotModel;
-    }
-
-    private static PlotModel CreateMockPiechartModel()
-    {
-        var plotModel = new PlotModel { Title = "Mock Pie Chart" };
-
-        var mockData = CreateMockDataRatings();
-        
-        var pieSeries = new PieSeries
-        {
-            Slices = {
-                new(mockData[0].Key, mockData[0].Value) { IsExploded = true },
-                new(mockData[1].Key, mockData[1].Value),
-                new(mockData[2].Key, mockData[2].Value),
-                new(mockData[3].Key, mockData[3].Value)
-            },
-            InsideLabelFormat = "{0}: {1}%"
-        };
-
-        plotModel.Series.Add(pieSeries);
-
-        return plotModel;
-    }
-
-    private static KeyValuePair<string, double>[] CreateMockDataRatings()
-    {
-        var sampleRatings = new KeyValuePair<string, double>[]
-        {
-            new("New Moon", 7.5),
-            new("First Quarter", 8.2),
-            new("Full Moon", 9.1),
-            new("Last Quarter", 6.8)
-        };
-
-        return sampleRatings;
     }
 }
