@@ -13,8 +13,16 @@
     <None Remove="Assets\Images\Backgrounds\background.jpeg" />
     <None Remove="Assets\Images\Backgrounds\background_2.jpeg" />
     <None Remove="Assets\Images\Backgrounds\background_3.jpeg" />
-    <None Remove="Assets\Images\phases\8_FullMoon.png" />
-    <None Remove="Assets\Images\phases\mondphasenDerNordhalbkugel.png" />
+	  <None Remove="Assets\Images\phases\0_NewMoon.png" />
+	  <None Remove="Assets\Images\phases\14_WaxingCrescent.png" />
+	  <None Remove="Assets\Images\phases\12_FirstQuarter.png" />
+	  <None Remove="Assets\Images\phases\10_WaxingGibbous.png" />
+	  <None Remove="Assets\Images\phases\8_FullMoon.png" />
+	  <None Remove="Assets\Images\phases\6_WaningGibbous.png" />
+	  <None Remove="Assets\Images\phases\4_WaningGibbous.png" />
+	  <None Remove="Assets\Images\phases\2_WaningGibbous.png" />
+	  <None Remove="Assets\Images\phases\16_NotFound.png" />
+	  <None Remove="Assets\Images\phases\mondphasenDerNordhalbkugel.png" />
     <None Remove="Views\moonscore_IconLogo.png" />
   </ItemGroup>
 
@@ -41,9 +49,33 @@
     <Resource Include="Assets\Images\Backgrounds\background_3.jpeg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\Images\phases\8_FullMoon.png">
+	<Resource Include="Assets\Images\phases\0_NewMoon.png">
+		<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Assets\Images\phases\14_WaxingCrescent.png">
+		<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Assets\Images\phases\12_FirstQuarter.png">
+		<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Assets\Images\phases\10_WaxingGibbous.png">
+		<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Assets\Images\phases\8_FullMoon.png">
+		<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Assets\Images\phases\6_WaningGibbous.png">
+		<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	</Resource>
+	<Resource Include="Assets\Images\phases\4_WaningGibbous.png">
+		<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	</Resource>
+    <Resource Include="Assets\Images\phases\2_WaningGibbous.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+	<Resource Include="Assets\Images\phases\16_NotFound.png">
+		<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	</Resource>
     <Resource Include="Assets\Images\phases\mondphasenDerNordhalbkugel.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
