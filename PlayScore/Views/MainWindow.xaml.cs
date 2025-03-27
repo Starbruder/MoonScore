@@ -5,7 +5,6 @@ using System.Windows;
 using System.Windows.Media.Imaging;
 using MoonScore.DataConstants;
 using MoonScore.Views;
-using System.Globalization;
 
 namespace MoonScore;
 
