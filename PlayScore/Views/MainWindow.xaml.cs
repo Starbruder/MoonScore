@@ -81,9 +81,15 @@ public partial class MainWindow : Window
         {
             var gameData = await _gameService.GetGamesByReleaseDateAsync(formattedDate);
 
-            if (gameData is null || gameData.Count == 0)
+            if (gameData is null)
             {
                 MessageBox.Show("Failed to retrieve game data. Please check your connection or try again.");
+                return;
+            }
+
+            if (gameData.Count == 0)
+            {
+                MessageBox.Show("Failed to retrieve game data for the requested day. There may not exist any.");
                 return;
             }
 
